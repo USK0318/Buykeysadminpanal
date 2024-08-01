@@ -1,0 +1,370 @@
+{{>header}}
+<style>
+        .approve-button{
+            padding: 8px 15px;
+            background-color: #4A3AFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+    }
+    .pop-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.pop-popup-content {
+    background-color: #fff;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%; /* Could be more or less, depending on screen size */
+    max-width: 600px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s;
+    text-align: left;
+    margin-top: 70px;
+
+}
+
+.pop-close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.pop-close-btn:hover,
+.pop-close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pop-form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.pop-form-group label {
+    width: 150px; /* Fixed width for labels */
+    font-weight: bold;
+}
+
+.pop-form-group input,
+.pop-form-group textarea {
+    width: calc(100% - 150px); /* Adjust width to fit next to label */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.pop-form-group textarea {
+    resize: none;
+}
+
+.pop-form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6052FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pop-form-group button:hover {
+    background-color: #218838;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+    .inputdiv {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1300px;
+            padding: 5px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #fff;
+            margin-top: 10PX;
+        }
+        .inputdiv input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .inputdiv button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #fff;
+            border-radius: 0 4px 4px 0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .inputdiv button:hover {
+            background-color: #ccc;
+        }
+        .inputdiv button i {
+            font-size: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .inputdiv {
+                width: 100%;
+                margin: 10px;
+            }
+            .inputdiv input, .inputdiv button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .inputdiv button i {
+                font-size: 18px;
+            }
+        }
+
+
+</style>
+    <div class="inputdiv">
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search here">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div class="print">
+        <button style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;" onclick="printTable('productTable')">Print</button>
+        <button onclick="toggleDropdown()">Columns</button>
+        <button onclick="exportToExcel('productTable', 'Loan Request')">Excel</button>
+        <button onclick="exportToPDF('productTable', 'Loan Request')">PDF</button>
+        <button onclick="exportToCSV('productTable', 'Loan Request')">CSV</button>
+        <button style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onclick="copyTable('productTable')">Copy</button>
+         <div id="columnDropdown" class="dropdown-content">
+            <!-- Checkboxes will be dynamically inserted here -->
+        </div>
+    </div>
+    <div class="records">
+        <label for="recordsPerPage">Records per page:</label>
+        <select id="recordsPerPage" onchange="changeRecordsPerPage()">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+
+<div class="table-container">
+<table id="productTable">
+    <thead>
+            <tr>
+                {{!-- <th  onclick="sortTable(0)"><i class="fa-solid fa-arrow-up-short-wide"></i>  Customer ID</th>
+                <th onclick="sortTable(1)"><i class="fa-solid fa-arrow-up-short-wide"></i>  Name</th>
+                <th onclick="sortTable(2)"><i class="fa-solid fa-arrow-up-short-wide"></i>  Categories</th>
+                <th onclick="sortTable(3)"><i class="fa-solid fa-arrow-up-short-wide"></i>  Amount</th>
+                <th >View</th>
+                <th >Approve</th> --}}
+
+                <th onclick="sortTable(0)">Customer ID</th>
+                <th onclick="sortTable(1)">Name</th>
+                <th onclick="sortTable(2)">Categories</th>
+                <th onclick="sortTable(3)">Amount</th>
+                <th>View</th>
+                <th>Approve</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>5</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>2</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>4</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>1</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>3</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>6</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>8</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>7</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>9</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button" >Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>sai</td>
+                <td>Honda</td>
+                <td>11</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>kiran</td>
+                <td>Honda</td>
+                <td>12</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            <tr>
+                <td>XXX452189620</td>
+                <td>Muthu Pandi</td>
+                <td>Honda</td>
+                <td>10</td>
+                <td><a href="#">View</a></td>
+<td><button class="approve-button">Approve</button></td>
+
+            </tr>
+            
+            <!-- Repeat the above <tr> block for each row of data -->
+        </tbody>
+    </table>
+</div>
+<div id="paginationControls">
+            <button onclick="previousPage()">Previous</button>
+            <span id="currentPage"></span>
+            <button onclick="nextPage()">Next</button>
+</div>
+                 <div id="popup" class="pop-popup">
+        <div class="pop-popup-content">
+            <span class="pop-close-btn" id="closePopupBtn">&times;</span>
+            <form id="popForm" action="#" method="post" enctype="multipart/form-data">
+                <h2 style="margin: 20px;">Loan Application</h2>
+                <div class="pop-form-group">
+                    <label for="popTitle">Loan Amount</label>
+                    <input type="text" id="popTitle" name="title" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="popDescription">Loan Term</label>
+                    <textarea id="popDescription" name="description" rows="4" required></textarea>
+                </div>
+                <div class="pop-form-group">
+                    <label for="popLoanAmount">Intrest Rate</label>
+                    <input type="number" id="popLoanAmount" name="loanAmount" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="popMonths">Total Due</label>
+                    <input type="number" id="popMonths" name="months" required>
+                </div>
+                <div class="pop-form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+         const approveButtons = document.querySelectorAll('.approve-button');
+        const popup = document.getElementById('popup');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+
+         approveButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            popup.style.display = 'block';
+        });
+    });
+
+        if (closePopupBtn) {
+            closePopupBtn.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    });
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    
+    <script src="../public/admin/js/table.js"></script>
+{{>footer}}
+

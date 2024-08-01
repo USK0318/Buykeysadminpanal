@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3s4Wz6iJgD/+ub2oU" crossorigin="anonymous">
+  <title>{{title}}</title>
+  {{!--
+  <link rel="icon" href="/public/admin/images/favicon.ico" type="image/x-icon"> --}}
+  <link rel="icon" href="/admin/images/favicon.ico" type="image/x-icon">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/admin/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/admin/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="/admin/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <!-- Select2 -->
+  <!--<link rel="stylesheet" href="/admin/plugins/select2/css/select2.min.css">-->
+  <!--<link rel="stylesheet" href="/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/css/adminlte.min.css">
+  <link rel="stylesheet" href="/admin/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+  <script>
+  
+    $(document).ready(function () {
+      // Get the current page URL
+      var currentUrl = window.location.pathname;
+
+      // Loop through each navigation link and check if it matches the current URL
+      $('.nav-sidebar a').each(function () {
+        var linkUrl = $(this).attr('href');
+        if (currentUrl === linkUrl) {
+          // Add the 'active' class to the matching link
+          $(this).addClass('active');
+        }
+      });
+    });
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    tfoot {
+      display: none;
+    }
+
+    .nav-sidebar .nav-item.active .nav-link {
+      background-color: #ffffff;
+      /* Change this to your desired active link background color */
+      color: #000000;
+      /* Change this to your desired active link text color */
+    }
+
+    .btn-primary {
+      background-color: black;
+    }
+
+    .btn-primary:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .page-item.active .page-link {
+      z-index: 3;
+      color: #fff;
+      background-color: black;
+      border-color: #3025a6;
+    }
+
+    .page-item .page-link {
+      color: black;
+    }
+
+    .active-tab {
+      background-color: black;
+      color: white;
+    }
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+      color: #fff;
+      background-color: black;
+    }
+
+    .nav-pills .nav-link:hover,
+    .nav-pills .show>.nav-link:hover {
+      color: #fff !important;
+    }
+
+    .custom-map-control-button {
+      padding: 14px;
+    }
+
+    .right {
+      float: right !important
+    }
+
+    .sidebar-dark-primary {
+      background-color: white;
+    }
+
+    [class*="sidebar-dark-"] .sidebar a {
+      color: rgb(255, 255, 255);
+    }
+
+    .nav-item:hover {
+      background-color: linear-gradient(to right, #ffffff, #e43603, #fa7199, #e85a19);
+      color: white;
+      border-bottom: 2px solid white;
+    }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+    .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0) !important;
+
+        {
+          {
+          !-- border-radius: 10px;
+          --
+        }
+      }
+    }
+
+    [class*="sidebar-dark-"] .nav-sidebar>.nav-item.menu-open>.nav-link,
+    [class*="sidebar-dark-"] .nav-sidebar>.nav-item:hover>.nav-link,
+    [class*="sidebar-dark-"] .nav-sidebar>.nav-item>.nav-link:focus {
+      background-image: linear-gradient(to right, #120366, #3025a6, #006AFF, #5b62b0);
+      color: #fff !important;
+    }
+
+    .sidebar {
+      padding-top: 2px;
+      padding-bottom: 30px;
+    }
+
+    .card-header {
+      background-color: #ebf6f8;
+    }
+
+    .brand-image {
+      border-bottom: 1px solid black;
+    }
+
+    .buttons-html5 {
+      padding: 5px 8px !important;
+    }
+
+    .btn {
+      margin-bottom: 3px;
+    }
+
+    .bg-info {
+      background-color: black !important;
+      color: white !important;
+    }
+
+    .bg-info:hover {
+      background-color: white !important;
+      color: black !important;
+    }
+
+    .btn-success {
+      background-color: black;
+      color: white;
+    }
+
+    .btn-success:hover {
+      background-color: white;
+      color: black;
+      border-color: black;
+    }
+
+    .humburger-menu:hover {
+      color: white !important;
+    }
+
+    .col-sm-6 h1 {
+      color: white !important;
+    }
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  width: 100px;
+  background-color: #6052FF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar .close-btn {
+  display: none;
+  font-size: 50px;
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.sidebar .logo {
+  margin-bottom: 20px;
+  color: white;
+  font-size: 24px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar ul li {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: padding 0.3s ease;
+}
+
+.sidebar ul li a {
+  color: white;
+  font-size: 18px;
+  display: block;
+  padding: 10px 0;
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar ul li a:hover {
+  background-color: #a29bfe;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+}
+
+header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #6052FF;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+header .logo img {
+  display: none;
+}
+
+header .hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.logo img {
+  display: none;
+}
+
+.logo1 img {
+  margin-bottom: 30px;
+  display: block;
+  height: 40px;
+}
+.title{
+  margin: 20px;
+}
+.title p{
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(64, 61, 61);
+}
+.sub-title{
+  margin-left:80% ;
+  margin-top: -28px;
+}
+.sub-title p{
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.sub-title h5{
+color: rgb(64, 61, 61);
+
+}
+.title2{
+      display: none;
+  }
+
+@media (max-width: 768px) {
+  header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      background-color: #6052FF;
+      padding: 20px;
+      color: white;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+  }
+
+  .title2{
+      display: block;
+      margin-bottom: 10px;
+  }
+
+  header .logo img {
+      display: block;
+      height: 40px;
+  }
+  .title{
+      display: none;
+  }
+
+  .logo img {
+      display: block;
+      height: 40px;
+  }
+
+  .logo1 img {
+      display: none;
+  }
+
+  .hamburger {
+      display: block;
+  }
+
+  header .hamburger {
+      display: block;
+  }
+
+  .sidebar {
+      position: fixed;
+      top: 80px;
+      left: -100%;
+      width: 250px;
+      height: 100%;
+      transition: left 0.3s ease;
+      overflow: scroll;
+  }
+
+  .sidebar.active {
+      left: 0;
+  }
+
+  .sidebar .close-btn {
+      display: block;
+      margin: 10px;
+      font-size: 30px;
+  }
+  .sidebar ul li a {
+      font-size: 16px;
+      padding-left: 30px;
+
+  }
+
+
+  .main-content {
+      margin-top: 70px; /* To prevent content from being hidden behind the fixed header */
+  }
+}
+
+/* Sidebar hover effect */
+@media (min-width: 769px) {
+  .sidebar:hover {
+      width: 250px;
+  }
+
+  .sidebar ul li {
+      justify-content: flex-start;
+      padding-left: 30px;
+  }
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scroll */
+}
+
+table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+    overflow:scroll;
+}
+
+th, td {
+    padding: 25px;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e8e5e5;
+}
+
+tbody tr:hover {
+    background-color: #e8e5e5;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+
+    }
+
+    th, td {
+        padding: 15px;
+    }
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px;
+}
+
+.dropdown-content label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.show {
+    display: block;
+}
+#paginationControls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#paginationControls button {
+    padding: 5px 10px;
+}
+
+#paginationControls span {
+    font-size: 16px;
+}
+.records {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+}
+.records label {
+    margin-right: 10px;
+}
+.records select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+        .print button {
+            padding: 10px 15px;
+            background-color: #6052FF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            margin: -3px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .print button:hover {
+            background-color: #fdfffe;
+            color: #6052FF;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .print button {
+                padding: 8px 12px;
+                font-size: 10px;
+            }      
+            .records select {
+                padding: 3px;
+                font-size: 12px;
+            }    
+        }
+
+  </style>
+ </head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="close-btn" id="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="\admin\dashboard" class="nav-link"><div class="logo">
+                <img src="/public/admin/images/logoimage.png" alt="Logo">
+            </div></a>
+            <div class="logo1">
+                <a href="\admin\dashboard" class="nav-link"><img src="/public/admin/images/Logo.png" id="logo-image" alt="Logo"></a>
+            </div>
+            <ul style="margin-bottom: 100px;">
+                <li><a href="\admin\dashboard" class="nav-link"><i class="fas fa-home"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Home</a></li>
+                <li><a href="\admin\customerdetails" class="nav-link"><i class="fas fa-user">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Customer details</a></li>
+                <li><a href="\admin\loandetails" class="nav-link"><i class="fa-solid fa-file-lines">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Loan Details</a></li>
+                <li><a href="\admin\loanrequest" class="nav-link"><i class="fa-solid fa-envelope-open">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Loan Request</a></li>
+                <li><a href="\admin\activeloan" class="nav-link"><i class="fa-solid fa-image-portrait">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Actice Loan</a></li>
+                <li><a href="\admin\executive" class="nav-link"><i class="fas fa-comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Executive</a></li>
+                <li><a href="\admin\categories" class="nav-link"><i class="fa-solid fa-list-ul">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Categories</a></li>
+                <li><a href="\admin\autopayment" class="nav-link"><i class="fa-solid fa-credit-card">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Autopayment</a></li>
+                <li><a href="\admin\precloseEMI" class="nav-link"><i class="fa-solid fa-clock">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Pre close EMI</a></li>
+                <li><a href="\admin\setting" class="nav-link"><i class="fa-solid fa-gear">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Setting</a></li>
+                <li><a href="\admin\login" class="nav-link"><i class="fa-solid fa-right-from-bracket">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Logout</a></li>
+            
+            </ul>
+        </div>
+        <div class="main-content">
+            <header>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="logo">
+                    <img class="imhmobel" src="/public/admin/images/logoimage.png" alt="Logo">
+                </div>
+            </header>
+            <div class="title">
+                <p>{{title}}</p>
+            <div class="sub-title">
+                <p>Welcome, Admin</p>
+                <h5>Today is 25th May 2021</h5>
+            </div>
+            </div>
+            <div class="title2" style="margin-top: 3px;">
+                <p  onclick="goBack()"><i class="fa-solid fa-arrow-left"></i><b> &nbsp;{{title}}</b></p>
+            </div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">

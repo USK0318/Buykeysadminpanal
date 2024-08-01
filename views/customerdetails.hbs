@@ -1,0 +1,140 @@
+{{>header}}
+<style>
+    .inputdiv {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1300px;
+            padding: 5px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #fff;
+            margin-top: 10PX;
+        }
+        .inputdiv input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .inputdiv button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #fff;
+            border-radius: 0 4px 4px 0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .inputdiv button:hover {
+            background-color: #ccc;
+        }
+        .inputdiv button i {
+            font-size: 20px;
+        }
+        @media (max-width: 600px) {
+            .inputdiv {
+                width: 100%;
+                margin: 10px;
+            }
+            .inputdiv input, .inputdiv button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .inputdiv button i {
+                font-size: 18px;
+            }
+        }
+</style>
+      <div class="inputdiv">
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search here">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div class="print">
+        <button style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;" onclick="printTable('productTable')">Print</button>
+        <button onclick="toggleDropdown()">Columns</button>
+        <button onclick="exportToExcel('productTable', '{{title}}')">Excel</button>
+        <button onclick="exportToPDF('productTable', '{{title}}')">PDF</button>
+        <button onclick="exportToCSV('productTable', '{{title}}')">CSV</button>
+        <button style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onclick="copyTable('productTable')">Copy</button>
+         <div id="columnDropdown" class="dropdown-content">
+            <!-- Checkboxes will be dynamically inserted here -->
+        </div>
+    </div>
+    <div class="records">
+        <label for="recordsPerPage">Records per page:</label>
+        <select id="recordsPerPage" onchange="changeRecordsPerPage()">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+<div class="table-container">
+
+<table  id="productTable">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Ph number</th>
+            <th>District</th>
+            <th>Pin code</th>
+            <th>Executive No</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>XXX452189620</td>
+            <td>Muthu Pandi</td>
+            <td>Honda</td>
+            <td>984071648</td>
+            <td>Telangana</td>
+            <td>600041</td>
+            <td>XXX452189620</td>
+            <td><a href="/admin/customerprofile/1">View</a></td>
+        </tr>
+        <tr>
+            <td>XXX452189620</td>
+            <td>Muthu Pandi</td>
+            <td>Honda</td>
+            <td>984071648</td>
+            <td>Telangana</td>
+            <td>600041</td>
+            <td>XXX452189620</td>
+            <td><a href="/admin/customerprofile/1">View</a></td>
+        </tr>
+        <tr>
+            <td>XXX452189620</td>
+            <td>Muthu Pandi</td>
+            <td>Honda</td>
+            <td>984071648</td>
+            <td>Telangana</td>
+            <td>600041</td>
+            <td>XXX452189620</td>
+            <td><a href="/admin/customerprofile/1">View</a></td>
+        </tr>
+        <!-- Repeat the above <tr> block for each row of data -->
+    </tbody>
+</table>
+</div>
+            <div id="paginationControls">
+            <button onclick="previousPage()">Previous</button>
+            <span id="currentPage"></span>
+            <button onclick="nextPage()">Next</button>
+        </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script src="../public/admin/js/table.js"></script>
+</div>
+
+{{>footer}}
+

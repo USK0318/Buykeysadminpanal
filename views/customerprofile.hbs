@@ -1,0 +1,362 @@
+{{>header}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+.profile-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+}
+
+.profile-img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.profile-info {
+  margin-left: 20px;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.profile-info p {
+  margin: 5px 0;
+  color: #888;
+}
+
+.profile-status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.edit-button {
+  background-color: transparent;
+  border: 1px solid #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.edit-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.profile-details {
+  padding: 20px 0;
+}
+
+.profile-details p {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.profile-details p strong {
+  color: #333;
+}
+
+.profile-details p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.loan-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.loan-section,
+.emi-section {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.loan-section h3{
+  margin: 0 0 20px;
+  font-size: 1.2em;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loan-card,
+.emi-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.loan-info {
+  flex: 1;
+}
+
+.loan-info p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.loan-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.decline-button,
+.approve-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.decline-button {
+  background-color: #e57373;
+  color: white;
+}
+
+.approve-button {
+  background-color: #64b5f6;
+  color: white;
+}
+
+.emi-info,
+.emi-summary {
+  flex: 1;
+}
+
+.emi-status {
+  background-color: #ffeb3b;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #333;
+}
+
+.emi-info p,
+.emi-summary p {
+  margin: 5px 0;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8em;
+  }
+
+  .profile-info {
+    margin-top: 8px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .profile-status {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .loan-details {
+    flex-direction: column;
+  }
+
+  .loan-section,
+  .emi-section {
+    margin-bottom: 20px;
+  }
+}
+.emi-section {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.emi-section h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 20px;
+  font-size: 1.2em;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.emi-card {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.emi-info, .emi-summary {
+  flex: 1;
+  min-width: 150px;
+}
+
+.emi-info p, .emi-summary p {
+  margin: 5px 0;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+}
+
+.emi-info p strong, .emi-summary p strong {
+  color: #333;
+  font-weight: bold;
+}
+
+.emi-info p:nth-child(odd), .emi-summary p:nth-child(odd) {
+  width: 50%;
+  color: #888;
+}
+
+.emi-info p:nth-child(even), .emi-summary p:nth-child(even) {
+  width: 50%;
+  text-align: right;
+  color: #333;
+}
+
+.emi-info, .emi-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emi-info p, .emi-summary p {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+.emi-summary p:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .emi-info p, .emi-summary p {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .emi-info p:nth-child(odd), .emi-summary p:nth-child(odd) {
+    width: auto;
+  }
+
+  .emi-info p:nth-child(even), .emi-summary p:nth-child(even) {
+    width: auto;
+  }
+}
+
+  </style>
+  <title>Loan Details</title>
+</head>
+<body>
+  <div class="profile-card">
+    <div class="profile-header">
+      <img src="https://d5nfy7n2jvqm2.cloudfront.net/oxyzo-fe-imgs/ashutosh-narayan.jpg" alt="Aman Joshi" class="profile-img">
+      <div class="profile-info">
+        <h2>Aman Joshi</h2>
+        <p>Hyderabad</p>
+        <p>Joined 07-11-21</p>
+      </div>
+      <div class="profile-status">
+        <span class="status-indicator"></span> Active 
+      </div>
+      <a href="/admin/customerprofileedit/1" class="edit-button">Edit</a>
+    </div>
+    <div class="profile-details">
+      <p><strong>Phone Number</strong> <span>628574115</span></p>
+      <p><strong>Mail Address</strong> aman.Joshi@gmail.com</p>
+      <p><strong>State</strong> xxxxxx</p>
+      <p><strong>District</strong> xxxxxx</p>
+      <p><strong>Address</strong> 6391 Elgin St. Celina, Hyderabad 10299</p>
+      <p><strong>Salary Slip</strong> <a href="#">View</a></p>
+      <p><strong>PAN & Aadhar</strong> <a href="/admin/pandetails/1">View</a></p>
+      <p><strong>BANK DETAILS</strong> <a href="/admin/bankdetails/1">View</a></p>
+      <p><strong>ALLOTTED EXECUTIVE ID</strong> XXX452189620</p>
+    </div>
+  </div>
+
+  <div class="loan-details">
+    <div class="loan-section">
+      <h3>APPLIED LOAN <a href="#" class="edit-link">Edit</a></h3>
+      <div class="loan-card">
+        <img src="https://cdn.iconscout.com/icon/free/png-256/free-honda-6-202784.png" alt="Honda" class="brand-logo">
+        <div class="loan-info">
+          <p><strong>HONDA</strong></p>
+          <p>Shine Run Model 560</p>
+          <p>Loan amount: 10,00,000</p>
+          <p>Loan Term: 12 months</p>
+          <p>Interest Rate: 5%</p>
+          <p>Total due: 20,00,000</p>
+        </div>
+        <div class="loan-actions">
+          <button class="decline-button">Decline</button>
+          <button class="approve-button">Approve</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="emi-section">
+      <h3>EMI DETAILS <a href="#" class="view-link">View</a></h3>
+      <div class="emi-card">
+        <div class="emi-info">
+          <p><strong>Loan amount:</strong> </p><p>10,00,000</p>
+          <p><strong>Paid amount:</strong> </p><p>200000</p>
+          <p><strong>Bal amount:</strong></p> <p>30,000</p>
+        </div>
+
+        <div class="emi-summary">
+          <p><strong>Pending term:</strong></p>
+          <p> 5 Months</p>
+          <p><strong>Next Payment:</strong></p><p> Feb 29, 2024</p>
+          <p><strong>Interest rate:</strong></p>
+          <p> 6.5%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+{{>footer}}

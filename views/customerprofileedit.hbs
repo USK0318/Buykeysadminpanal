@@ -1,0 +1,196 @@
+{{> header}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Customer Profile</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.form-container {
+  width: 80%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 300px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.image-upload {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+}
+
+.image-upload p {
+  margin: 0;
+  color: #777;
+}
+
+.image-upload a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .form-group {
+    min-width: 100%;
+  }
+
+  label {
+    font-size: 0.9em;
+  }
+
+  input[type="text"] {
+    padding: 8px;
+  }
+
+  .image-upload {
+    padding: 15px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Edit Customer Profile</h1>
+    <form>
+      <div class="form-group">
+        <label for="full-name">Full Name</label>
+        <input type="text" id="full-name" placeholder="Muthu Pandi">
+      </div>
+
+      <div class="form-group">
+        <label for="employment-type">Employment Type</label>
+        <input type="text" id="employment-type" placeholder="Salaried">
+      </div>
+
+      <div class="form-group">
+        <label for="date-of-joining">Date Of Joining</label>
+        <input type="text" id="date-of-joining" placeholder="07 - 05 -21">
+      </div>
+
+      <div class="form-group">
+        <label for="date-of-birth">Date of Birth</label>
+        <input type="text" id="date-of-birth" placeholder="07 - 05 -21">
+      </div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" id="state" placeholder="xxxxxxx">
+      </div>
+
+      <div class="form-group">
+        <label for="district">District</label>
+        <input type="text" id="district" placeholder="xxxxxxx">
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" placeholder="Enter Address">
+      </div>
+
+      <div class="form-group">
+        <label for="pin-code">Area & PIN code</label>
+        <input type="text" id="pin-code" placeholder="Enter Address">
+      </div>
+
+      <div class="form-group">
+        <label for="contact-number">Contact No.</label>
+        <input type="text" id="contact-number" placeholder="Enter Contact Number">
+      </div>
+
+      <div class="form-group">
+        <label for="mail-id">Mail ID</label>
+        <input type="text" id="mail-id" placeholder="Enter Emergency Contact Number">
+      </div>
+
+      <div class="form-group">
+        <label for="customer-id">Customer ID</label>
+        <input type="text" id="customer-id" placeholder="Enter ID Number">
+      </div>
+
+      <div class="form-group">
+        <label for="loan-type">Loan Type</label>
+        <input type="text" id="loan-type" placeholder="Two wheeler">
+      </div>
+
+      <div class="form-group">
+        <label for="profile-image">Profile Image</label>
+        <div class="image-upload">
+          <p>Drop your image here, or <a href="#">Browse</a></p>
+          <input type="file">
+        </div>
+      </div>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+{{> footer}}

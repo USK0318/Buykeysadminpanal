@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 0;
+        }
+        .header {
+            background-color: #122d84;
+            padding: 15px;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            padding: 10px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .sideprofile {
+            flex: 1;
+            max-width: 300px;
+            background-color: #122d84;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .imgese {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .formdiv {
+            flex: 2;
+            max-width: 1110px;
+            background-color: #122d84;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .formdiv form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .formdiv label {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .formdiv input,
+        .formdiv textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .formdiv textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .formdiv button {
+            background-color: #187db7;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .formdiv button:hover {
+            background-color: #0e1e6b;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sideprofile {
+                width: 90%;
+                margin: 0 auto 20px;
+            }
+            .formdiv {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 20px;
+            }
+            .imgese {
+                height: auto;
+            }
+            .formdiv textarea {
+                min-height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Blog</h1>
+    </div>
+    <div class="container">
+        <div class="sideprofile">
+            <img class="imgese" src="https://th.bing.com/th/id/R.4f583c13f803661b9d605e8f1dd270c6?rik=Sv4iqnZ4Pwx34g&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f5%2f4%2f1%2f680480.jpg&ehk=eDV99T8%2bvRSIMUXmwmM0aLj2%2f5IyeAbMGBQtZrtZlh0%3d&risl=&pid=ImgRaw&r=0" alt="Profile Image">
+        </div>
+        <div class="formdiv">
+            <form>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="Blog Title">
+                <label for="discussion">Discussion</label>
+                <textarea id="discussion" name="discussion">This is a blog post</textarea>
+                <label for="thumbnail">Thumbnail</label>
+                <input type="file" id="thumbnail" name="thumbnail">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // JavaScript code can be added here if needed
+    </script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+
+
+{{>header}}
+<style>
+    .inputdiv {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            padding: 5px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #fff;
+            margin-top: 10PX;
+        }
+        .inputdiv input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .inputdiv button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #fff;
+            border-radius: 0 4px 4px 0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .inputdiv button:hover {
+            background-color: #ccc;
+        }
+        .inputdiv button i {
+            font-size: 20px;
+        }
+        
+.pop-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.pop-popup-content {
+    background-color: #fff;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%; /* Could be more or less, depending on screen size */
+    max-width: 600px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s;
+    text-align: left;
+    margin-top: 100px;
+}
+
+.pop-close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.pop-close-btn:hover,
+.pop-close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pop-form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.pop-form-group label {
+    width: 150px; /* Fixed width for labels */
+    font-weight: bold;
+}
+
+.pop-form-group input,
+.pop-form-group textarea {
+    width: calc(100% - 150px); /* Adjust width to fit next to label */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.pop-form-group textarea {
+    resize: none;
+}
+
+.pop-form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6052FF;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pop-form-group button:hover {
+    background-color: #9f96fd;
+
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+        @media (max-width: 600px) {
+            .inputdiv {
+                width: 100%;
+                margin: 10px;
+            }
+            .inputdiv input, .inputdiv button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .inputdiv button i {
+                font-size: 18px;
+            }
+        }
+</style>
+    <div class="inputdiv">
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search here">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button style="color: #007bff; background-color: #f8f8f8; margin:2px;
+        border: 2px solid #007bff;
+        border-radius: 2px;
+        " class="ico1" id="pop"><b>Add Executive</b></button>
+        <button style="color: white; background-color: #007bff; margin:2px" class="ico1" ><i class="fa-solid fa-filter"></i> Filter</button>
+    </div>
+
+    <div class="print">
+        <button style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;" onclick="printTable('productTable')">Print</button>
+        <button onclick="toggleDropdown()">Columns</button>
+        <button onclick="exportToExcel('productTable', '{{title}}')">Excel</button>
+        <button onclick="exportToPDF('productTable', '{{title}}')">PDF</button>
+        <button onclick="exportToCSV('productTable', '{{title}}')">CSV</button>
+        <button style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onclick="copyTable('productTable')">Copy</button>
+         <div id="columnDropdown" class="dropdown-content">
+            <!-- Checkboxes will be dynamically inserted here -->
+        </div>
+    </div>
+    <div class="records">
+        <label for="recordsPerPage">Records per page:</label>
+        <select id="recordsPerPage" onchange="changeRecordsPerPage()">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+<div class="table-container">
+
+<table  id="productTable">
+    <thead>
+        <tr>
+            <th>Executive ID</th>
+            <th>Name</th>
+            <th>State</th>
+            <th>District</th>
+            <th>Branch</th>
+            <th>Users</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>XXX452189620</td>
+            <td>Muthu Pandi</td>
+            <td>Tamil Nadu</td>
+            <td>Chennai</td>
+            <td>Chennai</td>
+            <td>12</td>
+            <td><a href="/admin/executiveone/1">View</a></td>
+        </tr>
+        <tr>
+            <td>XXX452189620</td>
+            <td>Muthu Pandi</td>
+            <td>Tamil Nadu</td>
+            <td>Chennai</td>
+            <td>Chennai</td>
+            <td>12</td>
+            <td><a href="/admin/executiveone/1">View</a></td>
+        </tr>
+        <tr>
+            <td>XXX452189620</td>
+            <td>Muthu Pandi</td>
+            <td>Tamil Nadu</td>
+            <td>Chennai</td>
+            <td>Chennai</td>
+            <td>12</td>
+            <td><a href="/admin/executiveone/1">View</a></td>
+        </tr>
+        <tr>
+            <td>XXX452189620</td>
+            <td>Muthu Pandi</td>
+            <td>Tamil Nadu</td>
+            <td>Chennai</td>
+            <td>Chennai</td>
+            <td>112</td>
+            <td><a href="/admin/executiveone/1">View</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+            <div id="paginationControls">
+            <button onclick="previousPage()">Previous</button>
+            <span id="currentPage"></span>
+            <button onclick="nextPage()">Next</button>
+        </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script src="../public/admin/js/table.js"></script>
+
+     <div id="popup" class="pop-popup">
+        <div class="pop-popup-content">
+            <span class="pop-close-btn" id="closePopupBtn">&times;</span>
+            <form id="popForm" action="#" method="post" enctype="multipart/form-data">
+                <h2 style="margin: 20px;">Add Executive</h2>
+                <div class="pop-form-group">
+                    <label for="uploadpic">Upload Pic</label>
+                    <input type="file" id="uploadpic" name="uploadpic" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="excutiveName">Executive Name</label>
+                    <input type="text" id="excutiveName" name="excutiveName" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="idnumber">ID Number</label>
+                    <input type="text" id="idnumber" name="idnumber" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="branch">Branch</label>
+                    <input type="text" id="branch" name="branch" required>
+                </div>  
+               
+                <div class="pop-form-group">
+                    <button style="margin: 5px;
+                    color:#4A3AFF;
+                    background-color: #f8f8f8;
+                    border: 2px solid #4A3AFF;
+                    border-radius: 2px;
+                    
+                    ">Delete</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+  const pop = document.getElementById('pop');
+  const popup = document.getElementById('popup');
+  const popupContent = document.getElementById('popup-content');
+  const closePopupBtn = document.getElementById('closePopupBtn');
+
+  pop.addEventListener('click', () => {
+    popup.style.display = 'block';
+  });
+
+  closePopupBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+</script>
+{{>footer}}
+

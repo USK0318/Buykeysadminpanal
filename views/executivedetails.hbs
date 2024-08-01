@@ -1,0 +1,338 @@
+{{>header}}
+<style>
+
+.profile-card {
+    max-width: 1350px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.profile-location,
+.profile-id {
+    margin: 2px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.edit-button {
+    padding: 8px 16px;
+    border: 1px solid #4A3AFF;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #4A3AFF;
+    font-weight: bold;
+    cursor: pointer;
+        width: 100px;
+
+}
+
+.edit-button:hover {
+    background-color: #4A3AFF;
+    color: #fff;
+}
+
+.profile-body {
+    padding: 20px;
+}
+
+.profile-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.profile-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-value {
+    color: #666;
+}
+
+.pop-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.pop-popup-content {
+    background-color: #fff;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%; /* Could be more or less, depending on screen size */
+    max-width: 600px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s;
+    text-align: left;
+    margin-top: 110px;
+}
+
+.pop-close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.pop-close-btn:hover,
+.pop-close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pop-form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.pop-form-group label {
+    width: 150px; /* Fixed width for labels */
+    font-weight: bold;
+}
+
+.pop-form-group input,
+.pop-form-group textarea {
+    width: calc(100% - 150px); /* Adjust width to fit next to label */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.pop-form-group textarea {
+    resize: none;
+}
+
+.pop-form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6052FF;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pop-form-group button:hover {
+    background-color: #9f96fd;
+
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+</style>
+
+ <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-info">
+                <img src="https://th.bing.com/th/id/OIP.IGNf7GuQaCqz_RPq5wCkPgHaLH?w=141&h=211&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Profile Picture" class="profile-picture">
+                <div class="profile-details">
+                    <h2 class="profile-name">Aman Joshi</h2>
+                    <p class="profile-location">Hyderabad</p>
+                    <p class="profile-id">ID XXX452189620</p>
+                </div>
+            </div>
+            <button class="edit-button" id="pop">Edit</button>
+        </div>
+        <div class="profile-body">
+            <div class="profile-item">
+                <span class="profile-label">Location</span>
+                <span class="profile-value">xxxxxxxxxxx</span>
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">Branch</span>
+                <span class="profile-value">xxxxxxxxxx</span>
+            </div>
+        </div>
+    </div>
+<div class="table-container">
+
+<table >
+  <thead>
+    <tr>
+      <th>Customer ID</th>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Approval Status</th>
+      <th>View</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>XXX452189620</td>
+      <td>Muthu Pandi</td>
+      <td>Honda</td>
+      <td>Shine</td>
+
+    <td><i class="fa-solid fa-circle-xmark" style="color: red"></i></td>
+      <td><a href="#">View</a></td>
+    </tr>
+    <tr>
+      <td>XXX452189620</td>
+      <td>Dhanalakshmi</td>
+      <td>Honda</td>
+      <td>Shine</td>
+
+<td><i class="fa-sharp fa-regular fa-circle-check" style="color: green;"></i></td>
+      <td><a href="#">View</a></td>    </tr>
+    <tr>
+      <td>XXX452189620</td>
+      <td>Velu</td>
+      <td>Honda</td>
+      <td>Shine</td>
+
+<td><i class="fa-sharp fa-regular fa-circle-check" style="color: green;"></i></td>
+      <td><a href="#">View</a></td>    </tr>
+    <tr>
+      <td>XXX452189620</td>
+      <td>Oteri Nari</td>
+      <td>Honda</td>
+      <td>Shine</td>
+
+<td><i class="fa-sharp fa-regular fa-circle-check" style="color: green;"></i></td>
+      <td><a href="#">View</a></td>    </tr>
+    <tr>
+      <td>XXX452189620</td>
+      <td>Bhoopi</td>
+      <td>Honda</td>
+      <td>Shine</td>
+
+<td><i class="fa-sharp fa-regular fa-circle-check" style="color: green;"></i></td>
+      <td><a href="#">View</a></td>    </tr>
+    <tr>
+      <td>XXX452189620</td>
+      <td>Priya</td>
+      <td>Honda</td>
+      <td>Shine</td>
+    <td><i class="fa-solid fa-circle-xmark" style="color: red"></i></td>
+      <td><a href="#">View</a></td>    </tr>
+    <tr>
+      <td>XXX452189620</td>
+      <td>Mari Muthu8</td>
+      <td>Honda</td>
+      <td>Shine</td>
+<td><i class="fa-sharp fa-regular fa-circle-check" style="color: green;"></i></td>
+      <td><a href="#">View</a></td>    </tr>
+    <tr>
+      <td>XXX452189620</td>
+      <td>David</td>
+      <td>Honda</td>
+      <td>Shine</td>
+    <td><i class="fa-solid fa-circle-xmark" style="color: red"></i></td>
+      <td><a href="#">View</a></td>    
+      </tr>
+    </tbody>
+</table>
+</div>
+<div id="popup" class="pop-popup">
+        <div class="pop-popup-content">
+            <span class="pop-close-btn" id="closePopupBtn">&times;</span>
+            <form id="popForm" action="#" method="post" enctype="multipart/form-data">
+                <h2 style="margin: 20px;">Edit Executive</h2>
+                <div class="pop-form-group">
+                    <label for="uploadpic">Upload Pic</label>
+                    <input type="file" id="uploadpic" name="uploadpic" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="excutiveName">Executive Name</label>
+                    <input type="text" id="excutiveName" name="excutiveName" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="idnumber">ID Number</label>
+                    <input type="text" id="idnumber" name="idnumber" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="branch">Branch</label>
+                    <input type="text" id="branch" name="branch" required>
+                </div>  
+               
+                <div class="pop-form-group">
+                    <button style="margin: 5px;
+                    color:#4A3AFF;
+                    background-color: #f8f8f8;
+                    border: 2px solid #4A3AFF;
+                    border-radius: 2px;
+                    
+                    ">Delete</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script>
+  const pop = document.getElementById('pop');
+  const popup = document.getElementById('popup');
+  const popupContent = document.getElementById('popup-content');
+  const closePopupBtn = document.getElementById('closePopupBtn');
+
+  pop.addEventListener('click', () => {
+    popup.style.display = 'block';
+  });
+
+  closePopupBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+</script>
+{{>footer}}
+

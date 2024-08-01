@@ -1,0 +1,314 @@
+{{>header}}
+<style>
+        .tabs {
+        display: flex;
+        margin-bottom: 20px;
+        background:none;
+        padding: 10px 0;
+    }
+
+    .tab {
+        padding: 15px 30px;
+        cursor: pointer;
+        color: #333;
+        border-bottom: 2px solid transparent;
+        transition: border-bottom 0.3s;
+    }
+
+    .tab.active {
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+    }
+
+        .container1{
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-picture {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .profile-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .profile-role {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .upload-button {
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upload-button:hover {
+            background-color: #d4d4d4;
+        }
+
+        .basic-info {
+            margin-top: 30px;
+        }
+
+        .basic-info-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            flex: 1 1 150px;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            flex: 2 1 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .delete-button {
+            color: #4A3AFF;
+            border-color: #4A3AFF;
+            background: none;
+        }
+
+        .delete-button:hover {
+            background-color: #ffecec;
+        }
+
+        .save-button {
+            color: #fff;
+            background-color: #4A3AFF;
+        }
+
+        .save-button:hover {
+            background-color: #3c32e8;
+        }
+
+        .create-button {
+            color: #28a745;
+            background: none;
+            border-color: #28a745;
+        }
+
+        .create-button:hover {
+            background-color: #e9f7ec;
+        }
+        .buttondelete-button{
+            background: none;
+            border: 2px solid #4A3AFF;
+            color: #4A3AFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            min-width: 150px;
+            
+        }
+        .buttonedit-button{
+            background-color: #4A3AFF;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            min-width: 150px;
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-info {
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .form-group label, .form-group input {
+                flex: 1;
+                width: 100%;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .button {
+                margin-bottom: 10px;
+                width: 100%;
+                max-width: 300px;
+            }
+            .container1{
+                margin-top: 1px;
+            }
+            .buttondelete-button{
+                margin-top: 10px;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+
+<div class="tabs">
+    <div class="tab active"><i class="fa-solid fa-user"></i>  &nbsp; Account</div>
+    <div class="tab"><i class="fa-solid fa-user-gear"></i> &nbsp; Manage assosiate account</div>
+</div>
+<div class="container1" id="account">
+    <div class="header">
+        <div class="profile-info">
+            <img src="https://th.bing.com/th?id=ORMS.0cf2b57a5e620b9df2cbc02e45c3737d&pid=Wdp&w=268&h=140&qlt=90&c=1&rs=1&dpr=1&p=0" alt="Profile Picture" class="profile-picture">
+            <div>
+                <div class="profile-name">Admin xxxx</div>
+                <div class="profile-role">Admin of nuatveedu</div>
+            </div>
+        </div>
+        <button class="upload-button">Upload New Picture</button>
+    </div>
+
+    <div class="basic-info">
+        <div class="basic-info-title">Basic Information</div>
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" value="Aman Joshi">
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" value="aman_joshi@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" value="+91 8765435679">
+        </div>
+        <div class="form-group">
+            <label for="designation">Designation</label>
+            <input type="text" id="designation" value="Director">
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" value="Mumbai">
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button class="buttondelete-button">Delete Account</button>
+        <button class="button save-button">Save Changes</button>
+        <a href="/admin/createassociateaccount" class="button create-button">Create Team Associate account</a>
+    </div>
+</div>
+<div id="manage" class="container1" style="display: none;">
+    <div>
+        <a href="#" class="button create-button" style="color: #666;border:2px solid #666">Admin Support Associate</a>
+        {{!-- <a href="/admin/createassociateaccount" class="button create-button">Create Team Associate account</a> --}}
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Associate Name</th>
+                    <th>Associate id</th>
+                    <th>Joining date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Associate 1</td>
+                    <td>123456</td>
+                    <td>12/12/2021</td>
+                    <td><button class="buttondelete-button">Delete</button>
+                    <button class="buttonedit-button">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Associate 2</td>
+                    <td>123457</td>
+                    <td>12/12/2021</td>
+                    <td><button class="buttondelete-button">Delete</button>
+                    <button class="buttonedit-button">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Associate 3</td>
+                    <td>123458</td>
+                    <td>12/12/2021</td>
+                    <td><button class="buttondelete-button">Delete</button>
+                    <button class="buttonedit-button">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const containers = document.querySelectorAll('.container1');
+
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(tab => tab.classList.remove('active'));
+            containers.forEach(container => container.style.display = 'none');
+
+            tab.classList.add('active');
+            containers[index].style.display = 'block';
+        });
+    });
+</script>
+
+{{>footer}}
+

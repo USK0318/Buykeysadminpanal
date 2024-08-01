@@ -1,0 +1,165 @@
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+
+<!-- jQuery -->
+<script src="/admin/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/admin/js/jquery.dataTables.min.js"></script>
+<script src="/admin/js/dataTables.bootstrap4.min.js"></script>
+<script src="/admin/js/dataTables.responsive.min.js"></script>
+<script src="/admin/js/responsive.bootstrap4.min.js"></script>
+<script src="/admin/js/dataTables.buttons.min.js"></script>
+<script src="/admin/js/buttons.bootstrap4.min.js"></script>
+<script src="/admin/js/jszip.min.js"></script>
+<script src="/admin/js/pdfmake.min.js"></script>
+<script src="/admin/js/vfs_fonts.js"></script>
+<script src="/admin/js/buttons.html5.min.js"></script>
+<script src="/admin/js/buttons.print.min.js"></script>
+<script src="/admin/js/buttons.colVis.min.js"></script>
+<script src="/admin/js/inputmask.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/admin/js/demo.js"></script>
+
+<!-- Select2 -->
+<!--<script src="/admin/plugins/select2/js/select2.full.min.js"></script>-->
+
+<!-- Bootstrap Switch -->
+<script src="/admin/js/bootstrap-switch.min.js"></script>
+<script src="/admin/js/style.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+
+   <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.add('active');
+        });
+
+        document.getElementById('close-btn').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('active');
+        });
+    </script>
+
+<script>
+    $("input[data-bootstrap-switch]").each(function () {
+        $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+</script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+<script>
+    $(document).ready(function () {
+        if (!$.fn.DataTable.isDataTable('#example2')) {
+            $('#example2').addClass('table table-bordered table-striped').DataTable({
+                "paging": true,
+            });
+        }
+
+        
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var table = $("#example1").DataTable({
+            "responsive": true, "ordering": true, "lengthChange": false, "autoWidth": false, "bPaginate": true, "bInfo": false, "searching": true, "pageLength": 10,
+            order: [[0, 'asc']],
+            buttons: [
+                {
+                    extend: 'csvHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                'colvis'
+            ]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+       
+    });
+</script>
+<script>
+    function validateInput(input) {
+        input.value = input.value.replace(/\D/g, '');
+    }
+</script>
+<script>
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+      window.location.reload();
+    }
+  });
+</script>
+<script>
+    function getTodayString() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+    document.getElementById('estimatedDeliveryDate').setAttribute('min', getTodayString());
+</script>
+<!-- Your HTML code remains the same -->
+
+<script>
+  $(document).ready(function() {
+    // Get the current page URL
+    var currentUrl = window.location.pathname;
+
+    // Loop through each navigation link and check if it matches the current URL
+    $('.nav-sidebar a').each(function() {
+      var linkUrl = $(this).attr('href');
+      if (currentUrl === linkUrl) {
+        // Add the 'active' class to the matching link
+        $(this).addClass('active');
+      }
+    });
+
+    // Add an event listener to each navigation link
+    $('.nav-sidebar a').click(function() {
+      // Remove the 'active' class from all links
+      $('.nav-sidebar a').removeClass('active');
+      // Add the 'active' class to the clicked link
+      $(this).addClass('active');
+    });
+  });
+</script>
+
+<script>
+    // JavaScript to change the image on hover
+    document.querySelector('.sidebar').addEventListener('mouseover', function() {
+        document.getElementById('logo-image').src = "/public/admin/images/logoimage.png"; // Replace with the new image path
+    });
+
+    document.querySelector('.sidebar').addEventListener('mouseout', function() {
+        document.getElementById('logo-image').src = "/public/admin/images/Logo.png" ; // Revert to the original image
+    });
+</script>
+
+

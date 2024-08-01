@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #4A3AFF, #6a5acd);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .login-container {
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #4A3AFF;
+            margin-bottom: 30px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 20px;
+            background-color: #4A3AFF;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 50px;
+        }
+
+        .login-container button:hover {
+            background-color: #372dbb;
+        }
+
+        .image-container {
+            flex: 1;
+            background: url('https://s3-alpha-sig.figma.com/img/d848/9bf1/f1648947adf68eab1daa65b42b171ffc?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=auZQIcN2RDT--JWDHZGaq8ESxKXilwjbtWjqb6gfX3~Kr0V6skBpC~iZkUL5cCWC7hODnC3BhdN64cE8zr-yX1DALsuNEWY3tcccxzTBxsPQFw~-1EM0uzEBzFcYdwGbNSh587S-X4TfGwZutneVjdlRcm0j0Lqa2i3ot4k7o744Q6k4FokubqQpEYUSxIsI-RD6AZegaK3CU-4PsJpM1qPunfNM1jHgkXOHoqJFeobUEVfrUFowTbh~yxNqwIvIwBj9C-FsYO8ancmwq6ey6tbE-iwW9HB6Gx~BmKSduQMyPWlySohWbPaGhe6dtU-FRIyy~LO8fmo0UAsTtqxTag__') no-repeat center center;
+            background-size: cover;
+            height: 800px;
+            width: 800px
+        
+        }
+        @media screen and (max-width: 600px) {
+           
+
+            .image-container {
+                display: none;
+            }
+            
+            
+             .login-container{
+                position: absolute;
+                top:20%;
+                
+             }
+             .container{
+                  flex: 1;
+            background: url('https://s3-alpha-sig.figma.com/img/d848/9bf1/f1648947adf68eab1daa65b42b171ffc?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=auZQIcN2RDT--JWDHZGaq8ESxKXilwjbtWjqb6gfX3~Kr0V6skBpC~iZkUL5cCWC7hODnC3BhdN64cE8zr-yX1DALsuNEWY3tcccxzTBxsPQFw~-1EM0uzEBzFcYdwGbNSh587S-X4TfGwZutneVjdlRcm0j0Lqa2i3ot4k7o744Q6k4FokubqQpEYUSxIsI-RD6AZegaK3CU-4PsJpM1qPunfNM1jHgkXOHoqJFeobUEVfrUFowTbh~yxNqwIvIwBj9C-FsYO8ancmwq6ey6tbE-iwW9HB6Gx~BmKSduQMyPWlySohWbPaGhe6dtU-FRIyy~LO8fmo0UAsTtqxTag__') no-repeat center center;
+            background-size: cover;
+            height: 600px;
+            width: 400px
+             }
+             .login-container h2{
+                color: #000000;
+             }
+             .login-container form{
+                background: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+             }
+        }
+    </style>
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="image-container">
+    <h1 style="
+    margin-top: 40%;
+    color: white;
+    ">WELCOME TO THE LOGIN PAGE</h1>
+    <h1 style="color: white;">LOGIN PAGE</h1>
+    </div>
+    <div class="container">
+        <div class="login-container">
+            <form action="/login" method="POST">
+                        <h2>Login</h2>
+                        
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

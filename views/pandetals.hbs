@@ -1,0 +1,96 @@
+{{>header}}
+<style>
+    .bank-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .bank {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 18px;
+        max-width: 1100px;
+        width: 100%;
+    }
+    .bank label {
+        font-size: 19px;
+        font-weight: 500;
+        flex: 0.4;
+        margin-right: 0px;
+    }
+    .bank input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        height: 50px;
+        flex: 2;
+        max-width: 1100px;
+        width: 100%;
+    }
+    .approve-button, .approve-cancel {
+        padding: 8px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 13px;
+        width: 140px;
+        height: 40px;
+        margin: 10px;
+    }
+    .approve-button {
+        border: none;
+        background-color: #4A3AFF;
+        color: white;
+    }
+    .approve-cancel {
+        background-color: #f8f4f4;
+        color: #4A3AFF;
+        border: 3px solid #4A3AFF;
+    }
+
+    @media (max-width: 768px) {
+        .bank-details {
+            margin-top: 20px;
+        }
+        .bank {
+            flex-direction: column;
+            align-items: flex-start;
+            flex:0;
+        }
+        .bank label, .bank input {
+            width: 100%;
+            flex: none;
+            margin-right: 0;
+        }
+        .bank label {
+            margin-bottom: 5px;
+        }
+        .bank input {
+            height: 40px;
+        }
+        .approve-button, .approve-cancel {
+            width: 100%;
+            margin: 5px 0;
+        }
+    }
+</style>
+<div>
+    <form class="bank-details">
+        <div class="bank">
+            <label for="pancard">PAN CARD</label>
+            <input type="text" id="pancard" name="pancard" placeholder="Enter pancard number">
+        </div>
+        <div class="bank">
+            <label for="aadhar">AADJER CARD</label>
+            <input type="text" id="aadhar" name="aadhar" placeholder="Enter aadhar number">
+        </div>
+       
+        <div>
+            <button type="button" class="approve-cancel">Cancel</button>
+            <button type="submit" class="approve-button">Save</button>
+        </div>
+    </form>
+</div>
+{{>footer}}

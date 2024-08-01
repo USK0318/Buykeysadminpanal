@@ -1,0 +1,160 @@
+{{> header}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Customer Profile</title>
+  <style>
+
+
+.form-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 400px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.image-upload {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+}
+
+.image-upload p {
+  margin: 0;
+  color: #777;
+}
+
+.image-upload a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .form-group {
+    min-width: 100%;
+  }
+
+  label {
+    font-size: 0.9em;
+  }
+
+  input[type="text"] {
+    padding: 8px;
+  }
+
+  .image-upload {
+    padding: 15px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form>
+      <div class="form-group">
+        <label for="full-name">Full Name</label>
+        <input type="text" id="full-name" placeholder="Muthu Pandi">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="email">
+        </div>
+
+      <div class="form-group">
+        <label for="phone-number">Phone Number</label>
+        <input type="text" id="phone-number" placeholder="Enter Phone Number">
+        </div>
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" placeholder="xxxxxxx">
+        </div>
+
+      <div class="form-group">
+        <label for="newpassword">New Password</label>
+        <input type="text" id="newpassword" placeholder="Enter New Password">
+        </div>
+
+      <div class="form-group">
+        <label for="enterpasswordagain">Enter Password Again</label>
+        <input type="text" id="enterpasswordagain" placeholder="Enter Password Again">
+        </div>
+     
+      <div class="form-group">
+        <label for="profile-image">Profile Image</label>
+        <div class="image-upload">
+          <p>Drop your image here, or <a href="#">Browse</a></p>
+          <input type="file">
+        </div>
+      </div>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+{{> footer}}
