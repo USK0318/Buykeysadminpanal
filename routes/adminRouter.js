@@ -23,9 +23,14 @@ routes.get("/bankdetails/:id", adminController.bankdetails);
 routes.get("/pandetails/:id", adminController.pandetails);
 routes.get("/executiveone/:id", adminController.executiveone);
 routes.get('/createassociateaccount', adminController.createassociateaccount);
+
+
 routes.get('/userprofile', adminController.userprofile);
 routes.get('/blog', adminController.blog);
 routes.get('/faq', adminController.faq);
+routes.get('/arts',adminController.arts);
+routes.get('/alldata',adminController.alldata)
+
 
 
 module.exports = routes;

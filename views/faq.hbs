@@ -1,201 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fcfdff; /* Light background */
-            color: black;
-            margin: 0;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        .header {
-            background-color: #122d84; /* Dark blue header */
-            padding: 15px;
-            color: white;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .formdiv {
-            max-width: 1470px;
-            width: 100%;
-            background-color: #122d84; /* Dark blue form background */
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-        }
-        .formdiv form {
+
+
+{{>header}}
+<style>
+    .inputdiv {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            padding: 5px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #fff;
+            margin-top: 10PX;
         }
-        .formdiv label {
-            color: white;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .formdiv input,
-        .formdiv button {
+        .inputdiv input {
+            flex: 1;
             padding: 10px 15px;
             border: none;
-            border-radius: 4px;
+            border-radius: 4px 0 0 4px;
             font-size: 16px;
             box-sizing: border-box;
         }
-        .formdiv input {
-            background-color: #f0f0f0; /* Light background for input fields */
-            color: black;
-        }
-        .formdiv button {
-            background-color: #4A3AFF; /* Purple button */
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .formdiv button:hover {
-            background-color: #382BFF; /* Darker purple on hover */
-        }
-        .loan-request {
-            margin-top: 20px;
-            max-width: 1470px;
-            width: 100%;
-            background-color: #122d84; /* Dark blue form background */
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow-x: auto;
-        }
-        table {
-            margin-top: 10px;
-            width: 100%;
-            border-collapse: collapse;
-            color: #fffbfb;
-        }
-        thead {
-            background-color: #122d84; /* Dark blue header */
-            color: white;
-        }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            font-size: 14px;
-            border: 1px solid #ccc;
-        }
-        th {
-            font-weight: bold;
-        }
-        td button {
-            background-color: #4CAF50;
-            color: white;
+        .inputdiv button {
+            padding: 10px 15px;
             border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
+            background-color: #fff;
+            border-radius: 0 4px 4px 0;
+            font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        td button:hover {
-            background-color: #45a049;
+        .inputdiv button:hover {
+            background-color: #ccc;
         }
-        input[type="text"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box;
+        .inputdiv button i {
+            font-size: 20px;
         }
-        @media (max-width: 768px) {
-            .formdiv, .loan-request {
-                padding: 15px;
-            }
-            .formdiv input, .formdiv button {
-                font-size: 14px;
-                padding: 8px 10px;
-            }
-            th, td {
-                padding: 10px;
-                font-size: 12px;
-            }
-            .header {
-                font-size: 18px;
+        
+.pop-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.pop-popup-content {
+    background-color: #fff;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%; /* Could be more or less, depending on screen size */
+    max-width: 800px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s;
+    text-align: left;
+    margin-top: 100px;
+}
+
+.pop-close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.pop-close-btn:hover,
+.pop-close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pop-form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.pop-form-group label {
+    width: 150px; /* Fixed width for labels */
+    font-weight: bold;
+}
+
+.pop-form-group input,
+.pop-form-group textarea {
+    width: calc(100% - 150px); /* Adjust width to fit next to label */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.pop-form-group textarea {
+    resize: none;
+}
+
+.pop-form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6052FF;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pop-form-group button:hover {
+    background-color: #9f96fd;
+
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+        @media (max-width: 600px) {
+            .inputdiv {
                 width: 100%;
-                padding: 10px;
+                margin: 10px;
+            }
+            .inputdiv input, .inputdiv button {
+                font-size: 14px;
+                padding: 0px;
+            }
+            .inputdiv button i {
+                font-size: 18px;
             }
         }
-        @media (max-width: 480px) {
-            .formdiv, .loan-request {
-                padding: 10px;
-            }
-            .formdiv input, .formdiv button {
-                font-size: 12px;
-                padding: 6px 8px;
-            }
-            th, td {
-                padding: 8px;
-                font-size: 10px;
-            }
-            .header {
-                font-size: 16px;
-                padding: 8px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>FAQ Form</h1>
-    </div>
-
-    <div class="formdiv">
-        <form>
-            <label for="question">Question:</label>
-            <input type="text" id="question" name="question">
-
-            <label for="answer">Answer:</label>
-            <input type="text" id="answer" name="answer">
-
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-    <div class="loan-request">
-        <label style="color: white;" for="searchInput">Search :</label>
+</style>
+    <div class="inputdiv">
         <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search here">
-        <table>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Question</th>
-                    <th>Answer</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>What is the eligibility criteria for a personal loan?</td>
-                    <td>Applicant should be between 21-60 years of age</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>What is the maximum loan amount that can be availed?</td>
-                    <td>₹25,00,000</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button style="color: #007bff; background-color: #f8f8f8; margin:2px;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+        " class="ico1" id="pop"><b>Add FAQ</b></button>
     </div>
-</body>
-</html>
+
+    <div class="print">
+        <button style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;" onclick="printTable('productTable')">Print</button>
+        <button onclick="toggleDropdown()">Columns View</button>
+        <button onclick="exportToExcel('productTable', '{{title}}')">Excel</button>
+        <button onclick="exportToPDF('productTable', '{{title}}')">PDF</button>
+        <button onclick="exportToCSV('productTable', '{{title}}')">CSV</button>
+        <button style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onclick="copyTable('productTable')">Copy</button>
+         <div id="columnDropdown" class="dropdown-content">
+            <!-- Checkboxes will be dynamically inserted here -->
+        </div>
+    </div>
+    <div class="records">
+        <label for="recordsPerPage">Records per page:</label>
+        <select id="recordsPerPage" onchange="changeRecordsPerPage()">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+<div class="table-container">
+
+<table  id="productTable">
+    <thead>
+       <tr>
+        <th>S.No</th>
+        <th>Question</th>
+        <th>Answer</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>What is the name of the company?</td>
+            <td>Company name is XYZ</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>What is the name of the company?</td>
+            <td>Company name is XYZ</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>What is the name of the company?</td>
+            <td>Company name is XYZ</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>What is the name of the company?</td>
+            <td>Company name is XYZ</td>
+        </tr>
+    </tbody>
+    </tbody>
+</table>
+</div>
+            <div id="paginationControls">
+            <button onclick="previousPage()">Previous</button>
+            <span id="currentPage"></span>
+            <button onclick="nextPage()">Next</button>
+        </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script src="../public/admin/js/table.js"></script>
+
+     <div id="popup" class="pop-popup">
+        <div class="pop-popup-content">
+            <span class="pop-close-btn" id="closePopupBtn">&times;</span>
+            <form id="popForm" action="#" method="post" enctype="multipart/form-data">
+                <h2 style="margin: 20px;">Add FAQ</h2>
+                <div class="pop-form-group">
+                    <label for="question">Question:</label>
+                    <input type="text" id="question" name="question" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="answer">Answer:</label>
+                    <textarea id="answer" name="answer" rows="4" required></textarea>
+                </div>
+                <div class="pop-form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+  const pop = document.getElementById('pop');
+  const popup = document.getElementById('popup');
+  const popupContent = document.getElementById('popup-content');
+  const closePopupBtn = document.getElementById('closePopupBtn');
+
+  pop.addEventListener('click', () => {
+    popup.style.display = 'block';
+  });
+
+  closePopupBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+</script>
+{{>footer}}
+

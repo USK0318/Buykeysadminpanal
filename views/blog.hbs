@@ -1,3 +1,6 @@
+
+{{>header}}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +12,10 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            padding: 10px;
             margin: 0;
         }
         .header {
-            background-color: #122d84;
+            background-color: #6052FF;
             padding: 15px;
             color: white;
             border-radius: 5px;
@@ -32,7 +34,7 @@
         .sideprofile {
             flex: 1;
             max-width: 300px;
-            background-color: #122d84;
+            background-color: #6052FF;
             color: white;
             padding: 20px;
             border-radius: 5px;
@@ -48,7 +50,7 @@
         .formdiv {
             flex: 2;
             max-width: 1110px;
-            background-color: #122d84;
+            background-color: #6052FF;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -75,17 +77,24 @@
             min-height: 100px;
         }
         .formdiv button {
-            background-color: #187db7;
+            background-color: #f72119;
             color: white;
             border: none;
             padding: 10px;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
+            width: 30%;
         }
         .formdiv button:hover {
-            background-color: #0e1e6b;
+            background-color: #6052FF;
         }
+        .delete-container{
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Optional: Adds space between buttons */
+        }
+                
 
         @media (max-width: 900px) {
             .container {
@@ -112,13 +121,13 @@
             .formdiv textarea {
                 min-height: 80px;
             }
+            .formdiv  button{
+                width:70%
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Blog</h1>
-    </div>
     <div class="container">
         <div class="sideprofile">
             <img class="imgese" src="https://th.bing.com/th/id/R.4f583c13f803661b9d605e8f1dd270c6?rik=Sv4iqnZ4Pwx34g&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f5%2f4%2f1%2f680480.jpg&ehk=eDV99T8%2bvRSIMUXmwmM0aLj2%2f5IyeAbMGBQtZrtZlh0%3d&risl=&pid=ImgRaw&r=0" alt="Profile Image">
@@ -131,7 +140,9 @@
                 <textarea id="discussion" name="discussion">This is a blog post</textarea>
                 <label for="thumbnail">Thumbnail</label>
                 <input type="file" id="thumbnail" name="thumbnail">
-                <button type="submit">Submit</button>
+                <div class="delete-container">
+                    <button type="submit">Upload Here</button>
+                </div>
             </form>
         </div>
     </div>
@@ -140,3 +151,4 @@
     </script>
 </body>
 </html>
+{{>footer}}

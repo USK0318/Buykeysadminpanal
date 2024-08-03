@@ -1,3 +1,6 @@
+{{>header}}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +12,10 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            padding: 10px;
             margin: 0;
         }
         .header {
-            background-color: #122d84;
+            background-color: #6052FF;
             padding: 15px;
             color: white;
             border-radius: 5px;
@@ -29,10 +31,10 @@
             flex-wrap: wrap;
             gap: 15px;
         }
-        .sideprofile {
+        .sideprofile1 {
             flex: 1;
             max-width: 300px;
-            background-color: #122d84;
+            background-color: #6052FF;
             color: white;
             padding: 20px;
             border-radius: 5px;
@@ -40,13 +42,13 @@
             flex-direction: column;
             align-items: center;
         }
-        .sideprofile .profile-info {
+        .sideprofile1 .profile-info {
             width: 100%;
             display: flex;
             justify-content: space-between;
             margin: 5px 0;
         }
-        .sideprofile i {
+        .sideprofile1 i {
             color: black;
             font-size: 100px;
             margin-top: 40px;
@@ -55,7 +57,7 @@
         .formdiv {
             flex: 2;
             max-width: 1110px;
-            background-color: #122d84;
+            background-color: #6052FF;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -84,6 +86,7 @@
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
+            width: 30%;
         }
         .formdiv button:hover {
             background-color: #0e1e6b;
@@ -136,6 +139,16 @@
         .admin-status.true {
             color: green;
         }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* Optional: Adds space between buttons */
+        }
+        .profile-info p {
+            margin: 5px 0;
+        }
+
         @media (max-width: 600px) {
             .header {
                 width: 100%;
@@ -146,13 +159,13 @@
             .container {
                 flex-direction: column;
             }
-            .sideprofile {
+            .sideprofile1 {
                 width: 97%;
                 max-width: 97%;
                 align-items: flex-start;
                 margin-right: 10px;
             }
-            .sideprofile i {
+            .sideprofile1 i {
                 align-self: center;
                 margin-bottom: 20px;
             }
@@ -175,11 +188,8 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>User Profile</h1>
-    </div>
     <div class="container">
-        <div class="sideprofile">
+        <div class="sideprofile1">
             <i class="fa-solid fa-user"></i>
             <div class="profile-info">
                 <p><strong>Username:</strong></p>
@@ -217,8 +227,11 @@
                     <input type="checkbox" id="admin-toggle">
                     <span class="slider round"></span>
                 </label>
-                <button type="submit">Submit</button>
-            </form>
+                <div class="button-container">
+                    <button type="submit">Update</button>
+                    <button style="background-color: #e80707;">Delete</button>
+                </div>
+           </form>
         </div>
     </div>
     <script>
@@ -250,3 +263,4 @@
     </script>
 </body>
 </html>
+{{>footer}}

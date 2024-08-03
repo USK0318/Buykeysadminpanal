@@ -196,6 +196,51 @@
   padding: 0;
   font-family: Arial, sans-serif;
 }
+/* General scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+}
+
+/* Scrollbar styles for different states (active, hover) */
+::-webkit-scrollbar-thumb:active {
+  background: #333;
+}
+
+/* Scrollbar styles for horizontal scrollbars */
+::-webkit-scrollbar-thumb:horizontal {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  height: 12px;
+}
+
+/* Mozilla Firefox scrollbar styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* Horizontal scrollbar styles for Firefox */
+*::-moz-scrollbar-thumb {
+  width: 12px;
+}
+
 
 body {
   display: flex;
@@ -216,7 +261,8 @@ body {
   padding: 10px 0;
   transition: width 0.3s ease;
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
+
 }
 
 .sidebar.active {
@@ -572,7 +618,11 @@ a {
                 <li><a href="\admin\precloseEMI" class="nav-link"><i class="fa-solid fa-clock">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Pre close EMI</a></li>
                 <li><a href="\admin\setting" class="nav-link"><i class="fa-solid fa-gear">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Setting</a></li>
                 <li><a href="\admin\login" class="nav-link"><i class="fa-solid fa-right-from-bracket">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> Logout</a></li>
-            
+                <li><a href="\admin\userprofile" class="nav-link"><i class="fa-solid fa-user">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></i> User Profile</a></li>
+                <li><a href="\admin\blog" class="nav-link"><i class="fa-solid fa-blog">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></i> Blog</a></li>
+                <li><a href="\admin\faq" class="nav-link"><i class="fa-solid fa-question">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></i> FAQ</a></li>
+                <li><a href="\admin\arts" class="nav-link"><i class="fa-solid fa-paintbrush">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></i> Arts</a></li>
+                <li><a href="\admin\alldata" class="nav-link"><i class="fa-solid fa-database">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></i> All Data</a></li>
             </ul>
         </div>
         <div class="main-content">

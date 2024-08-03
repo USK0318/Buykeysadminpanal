@@ -92,6 +92,13 @@ function faq(req, res) {
     res.render('faq', { title: 'FAQ' });
 }
 
+function arts(req,res){
+    res.render('arts' , { title: 'Arts'})
+}
+function alldata(req ,res){
+    res.render('alldata' , { title: 'All Data'})
+}
+
 module.exports = {
      dashboard
     , customerdetails
@@ -116,5 +123,7 @@ module.exports = {
     ,userprofile
     ,blog
     ,faq
+    ,arts
+    ,alldata
 
 }
