@@ -10,21 +10,21 @@
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .profile-header {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid rgb(131, 128, 128);
   padding-bottom: 20px;
 }
 
 .profile-img {
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
 }
 
@@ -79,8 +79,9 @@
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #e0e0e0;
   padding-bottom: 10px;
+  width: 100%;
+  max-width: 1500px;
 }
 
 .profile-details p strong {
@@ -173,6 +174,10 @@
 .emi-summary p {
   margin: 5px 0;
   color: #333;
+}
+
+.edit-button{
+  margin-left: 80%;
 }
 
 /* Responsive Design */
@@ -284,6 +289,10 @@
   .emi-info p:nth-child(even), .emi-summary p:nth-child(even) {
     width: auto;
   }
+  .edit-button{
+    margin-left: 0;
+  }
+  
 }
 
   </style>
@@ -298,9 +307,7 @@
         <p>Hyderabad</p>
         <p>Joined 07-11-21</p>
       </div>
-      <div class="profile-status">
-        <span class="status-indicator"></span> Active 
-      </div>
+      
       <a href="/admin/customerprofileedit/1" class="edit-button">Edit</a>
     </div>
     <div class="profile-details">
@@ -309,12 +316,14 @@
       <p><strong>State</strong> xxxxxx</p>
       <p><strong>District</strong> xxxxxx</p>
       <p><strong>Address</strong> 6391 Elgin St. Celina, Hyderabad 10299</p>
+      <hr>
       <p><strong>Salary Slip</strong> <a href="#">View</a></p>
       <p><strong>PAN & Aadhar</strong> <a href="/admin/pandetails/1">View</a></p>
       <p><strong>BANK DETAILS</strong> <a href="/admin/bankdetails/1">View</a></p>
       <p><strong>ALLOTTED EXECUTIVE ID</strong> XXX452189620</p>
-    </div>
+    </hr>
   </div>
+</div>
 
   <div class="loan-details">
     <div class="loan-section">

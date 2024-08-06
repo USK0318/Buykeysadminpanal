@@ -72,7 +72,7 @@
 }
 
 .pop-form-group button {
-    width: 100%;
+    width: 40%;
     padding: 10px;
     background-color: #6052FF;
     color: white;
@@ -80,6 +80,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    align-items: center;
+
 }
 
 .pop-form-group button:hover {
@@ -118,6 +120,7 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+
         }
         .inputdiv button:hover {
             background-color: #ccc;
@@ -310,7 +313,9 @@
         <div class="pop-popup-content">
             <span class="pop-close-btn" id="closePopupBtn">&times;</span>
             <form id="popForm" action="#" method="post" enctype="multipart/form-data">
-                <h2 style="margin: 20px;">Loan Application</h2>
+                <h2 style="margin: 30px;
+                text-align: center;
+                ">Loan Application</h2>
                 <div class="pop-form-group">
                     <label for="popTitle">Loan Amount</label>
                     <input type="text" id="popTitle" name="title" required>

@@ -1,196 +1,222 @@
-{{> header}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Customer Profile</title>
+  <title>Form</title>
   <style>
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
+  background-color: #f8f9fa;
+  color: #343a40;
 }
 
-.form-container {
-  width: 80%;
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+.container1 {
+  width: 90%;
+  max-width: 1000px;
+  margin: 5% auto;
+  background:none;
+  padding: 2rem;
 }
 
-h1 {
-  font-size: 1.5em;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+.form-row {
+  margin-bottom: 1.5rem;
 }
 
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.form-group {
-  flex: 1;
-  min-width: 300px;
-}
-
-label {
-  display: block;
+.form-group label {
   font-weight: bold;
-  margin-bottom: 5px;
-  color: #555;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-input[type="text"] {
+.form-control {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  margin: 5px;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  font-size: 1rem;
 }
 
-.image-upload {
-  border: 2px dashed #ccc;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  background-color: #f1f1f1;
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
 }
 
-.image-upload p {
-  margin: 0;
-  color: #777;
+.custom-file {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.image-upload a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.submit-button {
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
-  font-size: 1em;
+.custom-file-input {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
-  background-color: #0056b3;
+.custom-file-label {
+  position: relative;
+  padding: 0.75rem;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 }
 
-/* Responsive Design */
+.custom-file-label::after {
+  content: "Browse";
+}
+
+.custom-file-label.selected::after {
+  content: "Selected";
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
 @media (max-width: 768px) {
-  .form-container {
-    width: 95%;
-    padding: 15px;
+  .form-row {
+    flex-direction: column;
   }
-
+  
   .form-group {
-    min-width: 100%;
-  }
-
-  label {
-    font-size: 0.9em;
-  }
-
-  input[type="text"] {
-    padding: 8px;
-  }
-
-  .image-upload {
-    padding: 15px;
+    width: 100%;
   }
 }
 
-  </style>
+</style>
 </head>
 <body>
-  <div class="form-container">
-    <h1>Edit Customer Profile</h1>
-    <form>
-      <div class="form-group">
-        <label for="full-name">Full Name</label>
-        <input type="text" id="full-name" placeholder="Muthu Pandi">
+<div class="container1 mt-4">
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6" style="width: 100%;">
+        <label for="fullName">Full Name</label>
+        <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
       </div>
-
-      <div class="form-group">
-        <label for="employment-type">Employment Type</label>
-        <input type="text" id="employment-type" placeholder="Salaried">
+      <div class="form-group col-md-6" style="width: 100%;">
+        <label for="employmentType">Employment Type</label>
+        <select id="employmentType" class="form-control">
+          <option selected>Choose...</option>
+          <option>Salaried</option>
+          <option>Self-Employed</option>
+          <option>Student</option>
+          <option>Retired</option>
+        </select>
       </div>
-
-      <div class="form-group">
-        <label for="date-of-joining">Date Of Joining</label>
-        <input type="text" id="date-of-joining" placeholder="07 - 05 -21">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6" style="width: 40%;">
+        <label for="dateOfJoining">Date Of Joining</label>
+        <input type="date" class="form-control" id="dateOfJoining" required>
       </div>
-
-      <div class="form-group">
-        <label for="date-of-birth">Date of Birth</label>
-        <input type="text" id="date-of-birth" placeholder="07 - 05 -21">
+      
+      <div class="form-group col-md-9" style="width: 40%;">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" class="form-control" id="dateOfBirth" required>
       </div>
+    </div>
 
-      <div class="form-group">
+    <div class="form-row">
+      <div class="form-group col-md-6" style="width: 40%;">
         <label for="state">State</label>
-        <input type="text" id="state" placeholder="xxxxxxx">
+        <select id="state" class="form-control">
+          <option selected>Choose...</option>
+          <option>State 1</option>
+          <option>State 2</option>
+          <option>State 3</option>
+          <option>State 4</option>
+        </select>
       </div>
-
-      <div class="form-group">
+      <div class="form-group col-md-6" style="width: 40%;">
         <label for="district">District</label>
-        <input type="text" id="district" placeholder="xxxxxxx">
+        <select id="district" class="form-control">
+          <option selected>Choose...</option>
+          <option>District 1</option>
+          <option>District 2</option>
+          <option>District 3</option>
+          <option>District 4</option>
+        </select>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" id="address" placeholder="Enter Address">
-      </div>
+    <div class="form-group" style="width: 100%;">
+      <label for="address">Address</label>
+      <input type="text" class="form-control" id="address" placeholder="Enter Address" required>
+    </div>
 
-      <div class="form-group">
-        <label for="pin-code">Area & PIN code</label>
-        <input type="text" id="pin-code" placeholder="Enter Address">
-      </div>
+    <div class="form-group" style="width: 100%;">
+      <label for="areaPin">Area & PIN code</label>
+      <input type="text" class="form-control" id="areaPin" placeholder="Enter Area & PIN code" required>
+    </div>
 
-      <div class="form-group">
-        <label for="contact-number">Contact No.</label>
-        <input type="text" id="contact-number" placeholder="Enter Contact Number">
+    <div class="form-row">
+      <div class="form-group col-md-6" style="width: 40%;">
+        <label for="contactNo">Contact No.</label>
+        <input type="tel" class="form-control" id="contactNo" placeholder="Enter Contact Number" required>
       </div>
+      <div class="form-group col-md-6" style="width: 40%;">
+        <label for="mailId">Mail ID</label>
+        <input type="email" class="form-control" id="mailId" placeholder="Enter Mail ID" required>
+      </div>
+    </div>
 
-      <div class="form-group">
-        <label for="mail-id">Mail ID</label>
-        <input type="text" id="mail-id" placeholder="Enter Emergency Contact Number">
+    <div class="form-row">
+      <div class="form-group col-md-6" style="width: 40%;">
+        <label for="customerId">Customer ID</label>
+        <input type="text" class="form-control" id="customerId" placeholder="Enter ID Number" required>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="customer-id">Customer ID</label>
-        <input type="text" id="customer-id" placeholder="Enter ID Number">
+    <div class="form-row">
+      <div class="form-group col-md-6"  style="width: 40%;"> 
+        <label for="loanType">Loan Type</label>
+        <select id="loanType" class="form-control">
+          <option selected>Choose...</option>
+          <option>Two wheeler</option>
+          <option>Four wheeler</option>
+          <option>Home Loan</option>
+          <option>Personal Loan</option>
+        </select>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="loan-type">Loan Type</label>
-        <input type="text" id="loan-type" placeholder="Two wheeler">
+    <div class="form-group">
+      <label for="profileImage">Profile Image</label>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="profileImage" accept="image/*">
+        <label class="custom-file-label" for="profileImage">Choose file</label>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="profile-image">Profile Image</label>
-        <div class="image-upload">
-          <p>Drop your image here, or <a href="#">Browse</a></p>
-          <input type="file">
-        </div>
-      </div>
-      <button type="submit" class="submit-button">Submit</button>
-    </form>
-  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
 </body>
 </html>
-{{> footer}}

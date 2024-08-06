@@ -98,27 +98,36 @@
 }
 
 .pop-form-group input,
-.pop-form-group textarea {
+.pop-form-group textarea  {
     width: calc(100% - 150px); /* Adjust width to fit next to label */
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 1px;
 }
+#popAction{
+     width: calc(100% - 150px); /* Adjust width to fit next to label */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+} 
+
 
 .pop-form-group textarea {
     resize: none;
 }
 
 .pop-form-group button {
-    width: 100%;
+    width: 40%;
     padding: 10px;
     background-color: #6052FF;
     color: white;
     border: none;
-    border-radius: 1px;
+    border-radius: 3px;
     cursor: pointer;
     font-size: 16px;
+    margin-left: 170px;
 }
 
 .pop-form-group button:hover {
@@ -168,7 +177,9 @@
         <div class="pop-popup-content">
             <span class="pop-close-btn" id="closePopupBtn">&times;</span>
             <form id="popForm" action="#" method="post" enctype="multipart/form-data">
-                <h2 style="margin: 20px;">Loan Application</h2>
+                <h2 style="margin: 30px;
+                text-align: center;
+                ">Loan Application</h2>
                 <div class="pop-form-group">
                     <label for="popTitle">Title</label>
                     <input type="text" id="popTitle" name="title" required>
@@ -192,6 +203,13 @@
                 <div class="pop-form-group">
                     <label for="popUpload">Upload Document</label>
                     <input type="file" id="popUpload" name="upload" required>
+                </div>
+                <div class="pop-form-group">
+                    <label for="popUpload">Action</label>
+                    <select id="popAction" name="action" required>
+                        <option value="approve">Approve</option>
+                        <option value="reject">Reject</option>
+                    </select>
                 </div>
                 <div class="pop-form-group">
                     <button type="submit">Submit</button>
