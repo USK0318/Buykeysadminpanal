@@ -116,6 +116,26 @@
     background-color: #766bf0;
 
 }
+.ico1{
+    color: #007bff;
+    background-color: #f8f8f8; 
+    margin:2px;
+    border: 2px solid #007bff;
+    border-radius: 2px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .ico1{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        margin-right: 50px;
+    }
+}
+    
+
 
 @keyframes fadeIn {
     from {opacity: 0;}
@@ -138,10 +158,7 @@
     <div class="inputdiv">
         <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search here">
         <button><i class="fa-solid fa-magnifying-glass"></i></button>
-        <button style="color: #007bff; background-color: #f8f8f8; margin:2px;
-        border: 2px solid #007bff;
-        border-radius: 2px;
-        " class="ico1" id="pop"><b>Add Executive</b></button>
+        <button class="ico1" id="pop">Add Executive</button>
     </div>
 
     <div class="print">

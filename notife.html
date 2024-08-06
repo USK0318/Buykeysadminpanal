@@ -67,6 +67,12 @@
         .toast.error{
             display: none;
         }
+        .toast.warning{
+            display: none;
+        }
+        .toast.info{
+            display: none;
+        }
 
 
         @keyframes fadeIn {
@@ -95,6 +101,8 @@
 <body>
     <button onclick="showToast('success')">Show Success Toast</button>
     <button onclick="showToast('error')">Show Error Toast</button>
+    <button onclick="showToast('warning')">Show Warning Toast</button>
+    <button onclick="showToast('info')">Show Info Toast</button>
     
     <div class="toast-container" id="toast-container">
         <div class="toast success">
@@ -105,6 +113,16 @@
         <div class="toast error">
             <div class="toast-icon"><i class="fas fa-exclamation-circle"></i></div>
             <div class="toast-message">Error! Something went wrong.</div>
+            <div class="close-btn" onclick="closeToast(this)">&times;</div>
+        </div>
+        <div class="toast warning">
+            <div class="toast-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="toast-message">Warning! Please be careful.</div>
+            <div class="close-btn" onclick="closeToast(this)">&times;</div>
+        </div>
+        <div class="toast info">
+            <div class="toast-icon"><i class="fas fa-info-circle"></i></div>
+            <div class="toast-message">Info! Here is some information for you.</div>
             <div class="close-btn" onclick="closeToast(this)">&times;</div>
         </div>
     </div>

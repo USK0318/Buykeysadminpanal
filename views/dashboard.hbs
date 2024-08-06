@@ -177,6 +177,98 @@
             }
         }
 
+            .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 300px;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            background-color: #323232;
+            color: #ffffff;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s, fadeOut 0.5s 3s;
+            transition: opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .toast.success {
+            background-color: #4CAF50;
+        }
+
+        .toast.error {
+            background-color: #f44336;
+        }
+
+        .toast.warning {
+            background-color: #ff9800;
+        }
+
+        .toast.info {
+            background-color: #2196F3;
+        }
+
+        .toast .toast-icon {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+
+        .toast .toast-message {
+            flex-grow: 1;
+            font-size: 1em;
+        }
+
+        .toast .close-btn {
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 0 10px;
+        }
+
+        .toast.success{
+            display: none;
+        }
+
+        .toast.error{
+            display: none;
+        }
+        .toast.warning{
+            display: none;
+        }
+        .toast.info{
+            display: none;
+        }
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+        
+
     </style>
 </head>
 
@@ -224,7 +316,7 @@
             <input type="file" name="inger" id="file" >
 
         </div>
-        <button class="button">Publish</button>
+        <button class="button" onclick="showToast('info')">Publish</button>
     </div>
 
     <div class="loan-request">
@@ -272,10 +364,32 @@
     <div class="message-form">
         <h2>Send Message to all</h2>
         <textarea placeholder="Write xxxxxxxxxxxx..."></textarea>
-        <button class="button">Add image</button>
-        <button class="button">Cancel</button>
-        <button class="button">Send</button>
+        <button class="button" onclick="showToast('warning')">Add image</button>
+        <button class="button" onclick="showToast('error')">Cancel</button>
+        <button class="button" onclick="showToast('success')" >Send</button>
     </div>
+    </div>
+     <div class="toast-container" id="toast-container">
+        <div class="toast success">
+            <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="toast-message">Success! Your action was successful.</div>
+            <div class="close-btn" onclick="closeToast(this)">&times;</div>
+        </div>
+        <div class="toast error">
+            <div class="toast-icon"><i class="fas fa-exclamation-circle"></i></div>
+            <div class="toast-message">Error! Something went wrong.</div>
+            <div class="close-btn" onclick="closeToast(this)">&times;</div>
+        </div>
+        <div class="toast warning">
+            <div class="toast-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="toast-message">Warning! Please be careful.</div>
+            <div class="close-btn" onclick="closeToast(this)">&times;</div>
+        </div>
+        <div class="toast info">
+            <div class="toast-icon"><i class="fas fa-info-circle"></i></div>
+            <div class="toast-message">Info! Here is some information for you.</div>
+            <div class="close-btn" onclick="closeToast(this)">&times;</div>
+        </div>
     </div>
 
     <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script>
@@ -297,8 +411,28 @@
         document.getElementById('product').addEventListener('click', function() {
             window.location.href = '/admin/categories';
         });
-
-
-
     </script>
+    <script>
+        function showToast(type) {
+            const toast = document.querySelector(`.toast.${type}`);
+            toast.style.display = 'flex';
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 300); // Match the time with fadeOut animation duration
+            }, 3000); // Display duration of the toast
+        }
+
+        function closeToast(element) {
+            const toast = element.parentElement;
+            toast.style.opacity = "0";
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 300);
+        }
+    </script>
+
+
 {{>footer}}
