@@ -125,6 +125,11 @@
             margin-top: 5px;
         }
 
+        .card:hover {
+            transform: translateY(-5px);
+            transition: 0.3s;
+            cursor: pointer;
+        }
         @media screen and (max-width: 768px) {
             .main {
                 flex-direction: column;
@@ -171,32 +176,34 @@
                 height: 80px;
             }
         }
+
     </style>
 </head>
 
 <body>
     <div class="container1">
-        <div class="card">
+        <div class="card" id="user">
             <h3>25,075</h3>
             <p>Users</p>
             <i class="icon fa fa-users"></i>
         </div>
-        <div class="card">
-            <h3>28</h3>
-            <p>Executives</p>
-            <i class="icon fa fa-user-tie"></i>
-        </div>
-        <div class="card">
-            <h3>2,500</h3>
-            <p>Active Loan</p>
-            <i class="icon fa fa-money-bill-wave"></i>
-        </div>
-        <div class="card">
-            <h3>5,000</h3>
-            <p>Product Purchased</p>
-            <i class="icon fa fa-shopping-cart"></i>
-        </div>
+    <div class="card" id="executive">
+        <h3>28</h3>
+        <p>Executives</p>
+        <i class="icon fa fa-user-tie"></i>
     </div>
+    <div class="card" id="loan">
+        <h3>2,500</h3>
+        <p>Active Loan</p>
+        <i class="icon fa fa-money-bill-wave"></i>
+    </div>
+    <div class="card" id="product">
+        <h3>5,000</h3>
+        <p>Product Purchased</p>
+        <i class="icon fa fa-shopping-cart"></i>
+    </div>
+</div>
+
     <div class="main"> 
     <div class="lucky-draw">
         <h2>Lucky Draw</h2>
@@ -273,5 +280,25 @@
 
     <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script>
 
+    <script>
+        {{!-- i need an alart box when i click on a div --}}
+        document.getElementById('user').addEventListener('click', function() {
+            window.location.href = '/admin/customerdetails';
+        });
 
+        document.getElementById('executive').addEventListener('click', function() {
+            window.location.href = '/admin/executive';
+        });
+
+        document.getElementById('loan').addEventListener('click', function() {
+            window.location.href = '/admin/loandetails';
+        });
+
+        document.getElementById('product').addEventListener('click', function() {
+            window.location.href = '/admin/categories';
+        });
+
+
+
+    </script>
 {{>footer}}
