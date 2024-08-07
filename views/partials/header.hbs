@@ -222,8 +222,11 @@ body {
   padding: 10px 0;
   transition: width 0.3s ease;
   position: relative;
-  overflow: scroll;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  height: 100%; /* Ensure the sidebar takes full height */
 }
+
 
 .sidebar.active {
   transform: translateX(0);
