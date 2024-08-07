@@ -21,6 +21,7 @@ hbs.registerHelper('inc', function (value, options) {
 hbs.registerHelper('eq', function (arg1, arg2, options) {
     return arg1 === arg2 ? options.fn(this) : options.inverse(this);
 });
+
 app.get("/", async (req, res) => {
     return res.redirect("/auth/login");
 });
