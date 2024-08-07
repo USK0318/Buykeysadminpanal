@@ -2,6 +2,9 @@ const express = require('express');
 const routes = express.Router();
 
 const adminController = require("../controllers/adminControllers");
+const bankController = require("../controllers/payment")
+
+routes.get("/index", bankController.createOrder);
 
 routes.get("/dashboard", adminController.dashboard);
 routes.get("/customerdetails", adminController.customerdetails);
