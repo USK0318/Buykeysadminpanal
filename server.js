@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 
-
 const path = require("path");
 const hbs = require("hbs");
 
@@ -29,7 +28,6 @@ app.get("/", async (req, res) => {
 const adminAuthRouter = require("./routes/adminRouter.js");
 
 app.use("/admin", adminAuthRouter);
-
 
 
 app.listen(8000, () => {

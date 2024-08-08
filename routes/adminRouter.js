@@ -5,6 +5,7 @@ const adminController = require("../controllers/adminControllers");
 const bankController = require("../controllers/payment")
 
 routes.post("/index", bankController.createOrder);
+routes.post("/verify", bankController.verifyPayment);
 
 routes.get("/dashboard", adminController.dashboard);
 routes.get("/customerdetails", adminController.customerdetails);
