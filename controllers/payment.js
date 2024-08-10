@@ -13,7 +13,7 @@ async function createOrder(req, res) {
 
     const options = {
         amount: amount*100, // amount in smallest currency unit
-        currency: "INR",
+        currency: "INR",     
         receipt: `receipt#${productId}`, // use productId in the receipt for tracking
         payment_capture: 1 // 1 for automatic capture
     };
