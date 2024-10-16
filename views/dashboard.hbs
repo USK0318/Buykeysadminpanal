@@ -1,375 +1,390 @@
 {{>header}}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+    }
+
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .container1 {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: calc(25% - 20px);
+        margin-bottom: 20px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .card h3 {
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .card .icon {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .lucky-draw,
+    .winner-announcement,
+    .loan-request,
+    .message-form {
+        width: 49%;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        box-sizing: border-box;
+    }
+
+    .lucky-draw .image-container1,
+    .winner-announcement .image-container1 {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .lucky-draw .image-container1 img,
+    .winner-announcement .image-container1 img {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 10px;
+    }
+
+    .lucky-draw .timer {
+        background-color: #f4f4f4;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .button {
+        background-color: #4A3AFf;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .winner-announcement .input-field {
+        margin-bottom: 20px;
+    }
+
+    .winner-announcement input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .loan-request table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .loan-request th,
+    .loan-request td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    .message-form textarea {
+        width: 100%;
+        height: 300px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-top: 5px;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
         .main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            flex-direction: column;
         }
 
-        .container1 {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            flex-wrap: wrap;
+        .lucky-draw,
+        .winner-announcement,
+        .loan-request,
+        .message-form {
+            width: 100%;
         }
 
         .card {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: calc(25% - 20px);
-            margin-bottom: 20px;
-            text-align: center;
-            box-sizing: border-box;
+            width: calc(50% - 20px);
         }
 
-        .card h3 {
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .card .icon {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .lucky-draw, .winner-announcement, .loan-request, .message-form {
-            width: 49%;
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            box-sizing: border-box;
-        }
-
-        .lucky-draw .image-container1, 
-        .winner-announcement .image-container1 {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .lucky-draw .image-container1 img,
-        .winner-announcement .image-container1 img {
-            max-width: 100%;
-            max-height: 200px;
-            border-radius: 10px;
-        }
-
-        .lucky-draw .timer {
-            background-color: #f4f4f4;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
+        .loan-request th,
+        .loan-request td {
+            font-size: 12px;
         }
 
         .button {
-            background-color: #4A3AFf;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-right: 10px;
-            margin-top: 5px;
-        }
-
-        .winner-announcement .input-field {
-            margin-bottom: 20px;
-        }
-
-        .winner-announcement input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .loan-request table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .loan-request th, .loan-request td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
             font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        .lucky-draw .timer {
+            font-size: 16px;
+            padding: 8px 16px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .container1 {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            width: 100%;
+        }
+
+        .button {
+            width: 100%;
+            margin-top: 10px;
         }
 
         .message-form textarea {
-            width: 100%;
-            height: 300px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-            margin-top: 5px;
+            height: 80px;
+        }
+    }
+
+    .toast-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        max-width: 300px;
+    }
+
+    .toast {
+        display: flex;
+        align-items: center;
+        background-color: #323232;
+        color: #ffffff;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.5s, fadeOut 0.5s 3s;
+        transition: opacity 0.3s ease;
+        opacity: 1;
+    }
+
+    .toast.success {
+        background-color: #4CAF50;
+    }
+
+    .toast.error {
+        background-color: #f44336;
+    }
+
+    .toast.warning {
+        background-color: #ff9800;
+    }
+
+    .toast.info {
+        background-color: #2196F3;
+    }
+
+    .toast .toast-icon {
+        margin-right: 10px;
+        font-size: 1.5em;
+    }
+
+    .toast .toast-message {
+        flex-grow: 1;
+        font-size: 1em;
+    }
+
+    .toast .close-btn {
+        cursor: pointer;
+        font-size: 1.2em;
+        padding: 0 10px;
+    }
+
+    .toast.success {
+        display: none;
+    }
+
+    .toast.error {
+        display: none;
+    }
+
+    .toast.warning {
+        display: none;
+    }
+
+    .toast.info {
+        display: none;
+    }
+
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        @media screen and (max-width: 768px) {
-            .main {
-                flex-direction: column;
-            }
-            .lucky-draw, .winner-announcement, .loan-request, .message-form {
-                width: 100%;
-            }
-
-            .card {
-                width: calc(50% - 20px);
-            }
-
-            .loan-request th, .loan-request td {
-                font-size: 12px;
-            }
-
-            .button {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
-
-            .lucky-draw .timer {
-                font-size: 16px;
-                padding: 8px 16px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .container1 {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .card {
-                width: 100%;
-            }
-
-            .button {
-                width: 100%;
-                margin-top: 10px;
-            }
-
-            .message-form textarea {
-                height: 80px;
-            }
-        }
-
-            .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            max-width: 300px;
-        }
-
-        .toast {
-            display: flex;
-            align-items: center;
-            background-color: #323232;
-            color: #ffffff;
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.5s, fadeOut 0.5s 3s;
-            transition: opacity 0.3s ease;
+        to {
             opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        .toast.success {
-            background-color: #4CAF50;
+        to {
+            opacity: 0;
+            transform: translateX(100%);
         }
-
-        .toast.error {
-            background-color: #f44336;
-        }
-
-        .toast.warning {
-            background-color: #ff9800;
-        }
-
-        .toast.info {
-            background-color: #2196F3;
-        }
-
-        .toast .toast-icon {
-            margin-right: 10px;
-            font-size: 1.5em;
-        }
-
-        .toast .toast-message {
-            flex-grow: 1;
-            font-size: 1em;
-        }
-
-        .toast .close-btn {
-            cursor: pointer;
-            font-size: 1.2em;
-            padding: 0 10px;
-        }
-
-        .toast.success{
-            display: none;
-        }
-
-        .toast.error{
-            display: none;
-        }
-        .toast.warning{
-            display: none;
-        }
-        .toast.info{
-            display: none;
-        }
-
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-                transform: translateX(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-        }
-        
-
-    </style>
+    }   
+</style>
 </head>
 
 <body>
     <div class="container1">
         <div class="card" id="user">
-            <h3>25,075</h3>
+            <h3>25075</h3>
             <p>Users</p>
             <i class="icon fa fa-users"></i>
         </div>
-    <div class="card" id="executive">
-        <h3>28</h3>
-        <p>Executives</p>
-        <i class="icon fa fa-user-tie"></i>
-    </div>
-    <div class="card" id="loan">
-        <h3>2,500</h3>
-        <p>Active Loan</p>
-        <i class="icon fa fa-money-bill-wave"></i>
-    </div>
-    <div class="card" id="product">
-        <h3>5,000</h3>
-        <p>Product Purchased</p>
-        <i class="icon fa fa-shopping-cart"></i>
-    </div>
-</div>
-
-    <div class="main"> 
-    <div class="lucky-draw">
-        <h2>Lucky Draw</h2>
-        <div class="image-container1">
-            <img src="https://via.placeholder.com/500x250" alt="Lucky Draw Image">
+        <div class="card" id="executive">
+            <h3>28</h3>
+            <p>Executives</p>
+            <i class="icon fa fa-user-tie"></i>
         </div>
-        <button class="button">Stop</button>
-    </div>
-
-    <div class="winner-announcement">
-        <h2>Announce the winners</h2>
-        <div class="input-field">
-            <label for="full-name">Full Name:</label>
-            <input type="text" id="full-name" placeholder="Enter Name">
+        <div class="card" id="loan">
+            <h3>2500</h3>
+            <p>Active Loan</p>
+            <i class="icon fa fa-money-bill-wave"></i>
         </div>
-        <div class="image-container1">
-            <img src="https://via.placeholder.com/200x200" alt="Winner Image">
-            <input type="file" name="inger" id="file" >
-
-        </div>
-        <button class="button" onclick="showToast('info')">Publish</button>
-    </div>
-
-    <div class="loan-request">
-        <div class="table-container">
-        <h2>New Loan Request</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Bike</th>
-                    <th>Loan Amount</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Sivapriya</td>
-                    <td>Honda Bike</td>
-                    <td>2,00,000</td>
-                    <td><button class="button">View</button></td>
-                </tr>
-                <tr>
-                    <td>Pardhu</td>
-                    <td>Honda Bike</td>
-                    <td>2,00,000</td>
-                    <td><button class="button">View</button></td>
-                </tr>
-                <tr>
-                    <td>Joshna</td>
-                    <td>Honda Bike</td>
-                    <td>2,00,000</td>
-                    <td><button class="button">View</button></td>
-                </tr>
-                <tr>
-                    <td>Prashanth</td>
-                    <td>Honda Bike</td>
-                    <td>2,00,000</td>
-                    <td><button class="button">View</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="card" id="product">
+            <h3>5000</h3>
+            <p>Product Purchased</p>
+            <i class="icon fa fa-shopping-cart"></i>
         </div>
     </div>
 
-    <div class="message-form">
-        <h2>Send Message to all</h2>
-        <textarea placeholder="Write xxxxxxxxxxxx..."></textarea>
-        <button class="button" onclick="showToast('warning')">Add image</button>
-        <button class="button" onclick="showToast('error')">Cancel</button>
-        <button class="button" onclick="showToast('success')" >Send</button>
+
+
+    <div class="main">
+        <div class="lucky-draw">
+            <h2>Lucky Draw</h2>
+            <div class="image-container1">
+                <img src="https://via.placeholder.com/500x250" alt="Lucky Draw Image">
+            </div>
+            <button class="button">Stop</button>
+        </div>
+
+        <div class="winner-announcement">
+            <h2>Announce the winners</h2>
+            <div class="input-field">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" placeholder="Enter Name">
+            </div>
+            <div class="image-container1">
+                <img src="https://via.placeholder.com/200x200" alt="Winner Image">
+                <input type="file" name="inger" id="file">
+
+            </div>
+            <button class="button" onclick="showToast('info')">Publish</button>
+        </div>
+
+        <div class="loan-request">
+            <div class="table-container">
+                <h2>New Loan Request</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Bike</th>
+                            <th>Loan Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sivapriya</td>
+                            <td>Honda Bike</td>
+                            <td>2,00,000</td>
+                            <td><button class="button">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Pardhu</td>
+                            <td>Honda Bike</td>
+                            <td>2,00,000</td>
+                            <td><button class="button">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Joshna</td>
+                            <td>Honda Bike</td>
+                            <td>2,00,000</td>
+                            <td><button class="button">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Prashanth</td>
+                            <td>Honda Bike</td>
+                            <td>2,00,000</td>
+                            <td><button class="button">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="message-form">
+            <h2>Send Message to all</h2>
+            <textarea placeholder="Write xxxxxxxxxxxx..."></textarea>
+            <button class="button" onclick="showToast('warning')">Add image</button>
+            <button class="button" onclick="showToast('error')">Cancel</button>
+            <button class="button" onclick="showToast('success')">Send</button>
+        </div>
     </div>
-    </div>
-     <div class="toast-container" id="toast-container">
+    <div class="toast-container" id="toast-container">
         <div class="toast success">
             <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
             <div class="toast-message">Success! Your action was successful.</div>
@@ -395,23 +410,53 @@
     <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script>
 
     <script>
-        {{!-- i need an alart box when i click on a div --}}
-        document.getElementById('user').addEventListener('click', function() {
+        { { !--i need an alart box when i click on a div-- } }
+        document.getElementById('user').addEventListener('click', function () {
             window.location.href = '/admin/customerdetails';
         });
 
-        document.getElementById('executive').addEventListener('click', function() {
+        document.getElementById('executive').addEventListener('click', function () {
             window.location.href = '/admin/executive';
         });
 
-        document.getElementById('loan').addEventListener('click', function() {
+        document.getElementById('loan').addEventListener('click', function () {
             window.location.href = '/admin/loandetails';
         });
 
-        document.getElementById('product').addEventListener('click', function() {
+        document.getElementById('product').addEventListener('click', function () {
             window.location.href = '/admin/categories';
         });
     </script>
+    <script>
+        // Function to animate numbers
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.querySelector("h3").innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+
+            window.requestAnimationFrame(step);
+        }
+
+        // Animate all cards dynamically on page load
+        window.onload = function () {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card) => {
+                const valueElement = card.querySelector('h3');
+                const finalValue = parseInt(valueElement.innerText, 10); // Get the final value from the card
+                animateValue(card.id, 0, finalValue, 2000); // Animate from 0 to final value
+            });
+        };
+    </script>
+
+
     <script>
         function showToast(type) {
             const toast = document.querySelector(`.toast.${type}`);
@@ -435,4 +480,4 @@
     </script>
 
 
-{{>footer}}
+    {{>footer}}

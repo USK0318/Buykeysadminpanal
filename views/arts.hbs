@@ -2,497 +2,509 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Profile and Winners</title>
     <style>
-       body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-.profile-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 20px;
-}
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
 
-.profile-card {
-    background-color: #6052FF;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 300px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    position: relative;
-}
+        .profile-card {
+            background-color: #6052FF;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 300px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
 
-.profile-image img {
-    width: 100%;
-    border-radius: 10px;
-}
+        .profile-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
 
-.profile-actions {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-}
+        .profile-actions {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
 
-.profile-actions i {
-    color: white;
-    margin-left: 10px;
-    cursor: pointer;
-}
+        .profile-actions i {
+            color: white;
+            margin-left: 10px;
+            cursor: pointer;
+        }
 
-.profile-details p {
-    margin: 10px 0;
-}
+        .profile-details p {
+            margin: 10px 0;
+        }
 
-.winners-container {
-    flex: 1;
-    background-color: #6052FF;
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-    width: 100%;
-}
+        .winners-container {
+            flex: 1;
+            background-color: #6052FF;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            width: 100%;
+        }
 
-.tabs {
-    display: flex;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
 
-.tab {
-    background-color: #f7f7fa;
-    color: rgb(11, 11, 11);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px 5px 0 0;
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
+        .tab {
+            background-color: #f7f7fa;
+            color: rgb(11, 11, 11);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
 
-.tab.active {
-    background-color: #070707;
-    color: #fafafc;
-}
+        .tab.active {
+            background-color: #070707;
+            color: #fafafc;
+        }
 
-.tab-content {
-    display: none;
-}
+        .tab-content {
+            display: none;
+        }
 
-.form-row,
-.form-row1 {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 10px;
-}
+        .form-row,
+        .form-row1 {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
-.form-row label,
-.form-row input,
-.form-row select,
-.form-row1 label,
-.form-row1 input,
-.form-row1 select {
-    margin-right: 10px;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-}
+        .form-row label,
+        .form-row input,
+        .form-row select,
+        .form-row1 label,
+        .form-row1 input,
+        .form-row1 select {
+            margin-right: 10px;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
 
-.form-row label {
-    flex: 1;
-}
+        .form-row label {
+            flex: 1;
+        }
 
-.form-row input,
-.form-row select {
-    flex: 2;
-}
+        .form-row input,
+        .form-row select {
+            flex: 2;
+        }
 
-.form-row1 {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
+        .form-row1 {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
 
-.save-btn {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
+        .save-btn {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
 
-.sideprofile1 {
-    flex: 1;
-    max-width: 300px;
-    background-color: #6052FF;
-    color: white;
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.winners-container {
-    flex: 1;
-    background-color: #e6e6ef;
-    padding: 20px;
-    border-radius: 10px;
-    color: rgb(9, 9, 9);
-    width: 100%;
-    overflow-x: auto; /* Allows horizontal scrolling if needed */
-}
+        .sideprofile1 {
+            flex: 1;
+            max-width: 300px;
+            background-color: #6052FF;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.sideprofile1 .profile-info {
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-    justify-content: space-between;
-}
-.profile-info p {
-    margin: 5px 0;
-    font-size: 13.5px;
-}
+        .winners-container {
+            flex: 1;
+            background-color: #e6e6ef;
+            padding: 20px;
+            border-radius: 10px;
+            color: rgb(9, 9, 9);
+            width: 100%;
+            overflow-x: auto;
+            /* Allows horizontal scrolling if needed */
+        }
 
-.delete-icon {
-    color: red;
-    cursor: pointer;
-}
+        .sideprofile1 .profile-info {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-@media (max-width: 768px) {
-    body{
-        margin: 0px;
-        padding: 0px;
-    }
-    .profile-container {
-        flex-direction: column;
-    }
-    
-    .profile-card {
-        max-width: 100%;
-        margin-right: 0px;
-        margin-bottom: 20px;
-    }
-}
+        .profile-info p {
+            margin: 5px 0;
+            font-size: 13.5px;
+        }
 
-@media (max-width: 480px) {
-    .tabs {
-        flex-direction: column;
-    }
-    
-    .tab {
-        width: 100%;
-        margin-bottom: 5px;
-    }
+        .delete-icon {
+            color: red;
+            cursor: pointer;
+        }
 
-    .form-row ,
-    .form-row1{
-        flex-direction: column;
-        align-items: flex-start;
-    }
+        @media (max-width: 768px) {
+            body {
+                margin: 0px;
+                padding: 0px;
+            }
 
-    .form-row label,
-    .form-row input,
-    .form-row select {
-        width: 100%;
-        margin-right: 0;
-    }
-    .profile-info p{
-        font-size: 12px;
-    }
-}
+            .profile-container {
+                flex-direction: column;
+            }
 
+            .profile-card {
+                max-width: 100%;
+                margin-right: 0px;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .form-row,
+            .form-row1 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .form-row label,
+            .form-row input,
+            .form-row select {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .profile-info p {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
+
 <body>
-<div class="profile-container">
-    <div class="profile-card">
-        <div class="profile-image">
-            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTlj5noLrqtD6ubAQNffl1y0DtwPSlN1r7r-SbUFhAg4LLUSoJo"
-                 alt="Profile">
-            <div class="profile-actions">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-trash"></i>
-            </div>
-        </div>
-        <div class="sideprofile1">
-            <div class="profile-info">
-                <p><strong>Name:</strong></p>
-                <p>saikiran</p>
-            </div>
-            <div class="profile-info">
-                <p><strong>Starts At:</strong></p>
-                <p>7/17/2024, 3:50:00 PM</p>
-            </div>
-            <div class="profile-info">
-                <p><strong>Ends At:</strong></p>
-                <p>8/9/2024, 3:48:00 PM</p>
-            </div>
-            <div class="profile-info">
-                <p><strong>Status:</strong></p>
-                <p>On-Going</p>
-            </div>
-            <div class="profile-info">
-                <p><strong>Scratch Time:</strong></p>
-                <p>7/17/24, 4:14:00 PM</p>
-            </div>
-            <div class="profile-info">
-                <p><strong>Max Joining:</strong></p>
-                <p>1111</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="winners-container">
-
-        <div class="tabs">
-            <button class="tab active" data-tab="arts">Arts</button>
-            <button class="tab" data-tab="winners">Winners</button>
-            <button class="tab" data-tab="joined">Joined Users</button>
-        </div>
-
-        <div class="arts tab-content" style="padding: 20px;">
-    <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-        <div style="display: flex; align-items: center;">
-            Search: &nbsp;
-            <input type="text" placeholder="Search..." style="padding: 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px;">
-            
-                
-        </div>
-    </div>
-
-    
-    <table class="winners-table">
-        <thead>
-            <tr>
-                <th>S.No</th>
-                <th>Art Title</th>
-                <th>Estimation</th>
-                <th>Artist Name</th>
-                <th>Total Payable Amount</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td >1</td>
-                <td >Sunset Glory</td>
-                <td >$5000</td>
-                <td >John Doe</td>
-                <td >$4500</td>
-                <td >
-                    <i class="fas fa-trash-alt delete-icon" style="cursor: pointer;"></i>
-                </td>
-            </tr>
-            <tr>
-                <td >2</td>
-                <td >Moonlight Bliss</td>
-                <td >$3000</td>
-                <td >Jane Smith</td>
-                <td >$2700</td>
-                <td >
-                    <i class="fas fa-trash-alt delete-icon" style="cursor: pointer;"></i>
-                </td>
-            </tr>
-            <tr>
-                <td >3</td>
-                <td >Abstract Wonders</td>
-                <td >$4000</td>
-                <td >Alice Brown</td>
-                <td >$3600</td>
-                <td >
-                    <i class="fas fa-trash-alt delete-icon" style="cursor: pointer;"></i>
-                </td>
-            </tr>
-            <tr>
-                <td >4</td>
-                <td >Nature's Call</td>
-                <td >$2000</td>
-                <td >Charlie Green</td>
-                <td >$1800</td>
-                <td >
-                    <i class="fas fa-trash-alt delete-icon" style="cursor: pointer;"></i>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    {{!-- <div style="margin-top: 20px; display: flex; justify-content: center;">
-        <button style="padding: 8px 12px; margin: 0 5px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            Previous
-        </button>
-        <span style="padding: 8px 12px; margin: 0 5px; font-size: 14px;">Page 1 of 5</span>
-        <button style="padding: 8px 12px; margin: 0 5px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            Next
-        </button>
-    </div> --}}
-</div>
-
-
-        <div class="winners tab-content">
-            <div class="form">
-                <div class="form-row">
-                    <label for="select-winner">Select Winner*</label>
-                    <select id="select-winner">
-                        <option>Select</option>
-                        <!-- Options go here -->
-                    </select>
-                    <label for="rank">Rank</label>
-                    <input type="text" id="rank" placeholder="">
-                    <label for="amount">Amount*</label>
-                    <input type="text" id="amount" placeholder="">
-                    <button class="save-btn">Save</button>
-                </div>
-                <div class="form-row1">
-                    <label for="from">From*</label>
-                    <input type="text" id="from" placeholder="5">
-                    <label for="to">To*</label>
-                    <input type="text" id="to" placeholder="50">
-                    <label for="amount-range">Amount*</label>
-                    <input type="text" id="amount-range" placeholder="50">
-                    <button class="save-btn">Save</button>
+    <div class="profile-container">
+        {{!-- <div class="profile-card">
+            <div class="profile-image">
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTlj5noLrqtD6ubAQNffl1y0DtwPSlN1r7r-SbUFhAg4LLUSoJo"
+                    alt="Profile">
+                <div class="profile-actions">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash"></i>
                 </div>
             </div>
-            
-            <table class="winners-table">
-                <thead>
-                <tr>
-                    <th>S No</th>
-                    <th>Amount</th>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Mobile No</th>
-                    <th>Scratch Time</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>$5000</td>
-                    <td>1</td>
-                    <td>JohnDoe</td>
-                    <td>1234567890</td>
-                    <td>7/17/24, 4:14:00 PM</td>
-                    <td><i class="fas fa-trash-alt delete-icon"></i></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>$3000</td>
-                    <td>2</td>
-                    <td>JaneSmith</td>
-                    <td>0987654321</td>
-                    <td>7/17/24, 4:20:00 PM</td>
-                    <td><i class="fas fa-trash-alt delete-icon"></i></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>$4000</td>
-                    <td>3</td>
-                    <td>AliceBrown</td>
-                    <td>1231231234</td>
-                    <td>7/17/24, 4:25:00 PM</td>
-                    <td><i class="fas fa-trash-alt delete-icon"></i></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>$2000</td>
-                    <td>4</td>
-                    <td>CharlieGreen</td>
-                    <td>4321432143</td>
-                    <td>7/17/24, 4:30:00 PM</td>
-                    <td><i class="fas fa-trash-alt delete-icon"></i></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="sideprofile1">
+                <div class="profile-info">
+                    <p><strong>Name:</strong></p>
+                    <p>saikiran</p>
+                </div>
+                <div class="profile-info">
+                    <p><strong>Starts At:</strong></p>
+                    <p>7/17/2024, 3:50:00 PM</p>
+                </div>
+                <div class="profile-info">
+                    <p><strong>Ends At:</strong></p>
+                    <p>8/9/2024, 3:48:00 PM</p>
+                </div>
+                <div class="profile-info">
+                    <p><strong>Status:</strong></p>
+                    <p>On-Going</p>
+                </div>
+                <div class="profile-info">
+                    <p><strong>Scratch Time:</strong></p>
+                    <p>7/17/24, 4:14:00 PM</p>
+                </div>
+                <div class="profile-info">
+                    <p><strong>Max Joining:</strong></p>
+                    <p>1111</p>
+                </div>
+            </div>
+        </div> --}}
 
-        <div class="joined tab-content">
+        <div class="winners-container">
+
+            <div class="tabs">
+                <button class="tab active" data-tab="arts">Arts</button>
+                <button class="tab" data-tab="winners">Winners</button>
+                <button class="tab" data-tab="joined">Joined Users</button>
+            </div>
+
+            <div class="arts tab-content" style="padding: 20px;">
+                <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center;">
+                        Search: &nbsp;
+                        <input type="text" placeholder="Search..."
+                            style="padding: 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px;">
+
+
+                    </div>
+                </div>
+
+
+                <table class="winners-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Art Title</th>
+                            <th>Estimation</th>
+                            <th>Artist Name</th>
+                            <th>Total Payable Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Sunset Glory</td>
+                            <td>$5000</td>
+                            <td>John Doe</td>
+                            <td>$4500</td>
+                            <td>
+                                <i class="fas fa-trash-alt delete-icon" style="cursor: pointer;"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Moonlight Bliss</td>
+                            <td>$3000</td>
+                            <td>Jane Smith</td>
+                            <td>$2700</td>
+                            <td>
+                                <i class="fas fa-trash-alt delete-icon" style="cursor: pointer;"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Abstract Wonders</td>
+                            <td>$4000</td>
+                            <td>Alice Brown</td>
+                            <td>$3600</td>
+                            <td>
+                                <i class="fas fa-trash-alt delete-icon" style="cursor: pointer;"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Nature's Call</td>
+                            <td>$2000</td>
+                            <td>Charlie Green</td>
+                            <td>$1800</td>
+                            <td>
+                                <i class="fas fa-trash-alt delete-icon" style="cursor: pointer;"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                {{!-- <div style="margin-top: 20px; display: flex; justify-content: center;">
+                    <button
+                        style="padding: 8px 12px; margin: 0 5px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        Previous
+                    </button>
+                    <span style="padding: 8px 12px; margin: 0 5px; font-size: 14px;">Page 1 of 5</span>
+                    <button
+                        style="padding: 8px 12px; margin: 0 5px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        Next
+                    </button>
+                </div> --}}
+            </div>
+
+
+            <div class="winners tab-content">
+                <div class="form">
+                    <div class="form-row">
+                        <label for="select-winner">Select Winner*</label>
+                        <select id="select-winner">
+                            <option>Select</option>
+                            <!-- Options go here -->
+                        </select>
+                        <label for="rank">Rank</label>
+                        <input type="text" id="rank" placeholder="">
+                        <label for="amount">Amount*</label>
+                        <input type="text" id="amount" placeholder="">
+                        <button class="save-btn">Save</button>
+                    </div>
+                    <div class="form-row1">
+                        <label for="from">From*</label>
+                        <input type="text" id="from" placeholder="5">
+                        <label for="to">To*</label>
+                        <input type="text" id="to" placeholder="50">
+                        <label for="amount-range">Amount*</label>
+                        <input type="text" id="amount-range" placeholder="50">
+                        <button class="save-btn">Save</button>
+                    </div>
+                </div>
+
+                <table class="winners-table">
+                    <thead>
+                        <tr>
+                            <th>S No</th>
+                            <th>Amount</th>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <th>Mobile No</th>
+                            <th>Scratch Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>$5000</td>
+                            <td>1</td>
+                            <td>JohnDoe</td>
+                            <td>1234567890</td>
+                            <td>7/17/24, 4:14:00 PM</td>
+                            <td><i class="fas fa-trash-alt delete-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>$3000</td>
+                            <td>2</td>
+                            <td>JaneSmith</td>
+                            <td>0987654321</td>
+                            <td>7/17/24, 4:20:00 PM</td>
+                            <td><i class="fas fa-trash-alt delete-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>$4000</td>
+                            <td>3</td>
+                            <td>AliceBrown</td>
+                            <td>1231231234</td>
+                            <td>7/17/24, 4:25:00 PM</td>
+                            <td><i class="fas fa-trash-alt delete-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>$2000</td>
+                            <td>4</td>
+                            <td>CharlieGreen</td>
+                            <td>4321432143</td>
+                            <td>7/17/24, 4:30:00 PM</td>
+                            <td><i class="fas fa-trash-alt delete-icon"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="joined tab-content">
                 <div class="print">
-        <button style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;" onclick="printTable('productTable')">Print</button>
-        <button onclick="toggleDropdown()">Columns View</button>
-        <button onclick="exportToExcel('productTable', '{{title}}')">Excel</button>
-        <button onclick="exportToPDF('productTable', '{{title}}')">PDF</button>
-        <button onclick="exportToCSV('productTable', '{{title}}')">CSV</button>
-        <button style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onclick="copyTable('productTable')">Copy</button>
-         <div id="columnDropdown" class="dropdown-content">
-            <!-- Checkboxes will be dynamically inserted here -->
-     </div>
-            <table class="winners-table">
-                <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Username</th>
-                    <th>Mobile</th>
-                    <th>Scratch Time</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>JohnDoe</td>
-                    <td>1234567890</td>
-                    <td>7/17/24, 4:14:00 PM</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>JaneSmith</td>
-                    <td>0987654321</td>
-                    <td>7/17/24, 4:20:00 PM</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>AliceBrown</td>
-                    <td>1231231234</td>
-                    <td>7/17/24, 4:25:00 PM</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>CharlieGreen</td>
-                    <td>4321432143</td>
-                    <td>7/17/24, 4:30:00 PM</td>
-                </tr>
-                </tbody>
-            </table>
+                    <button style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;"
+                        onclick="printTable('productTable')">Print</button>
+                    <button onclick="toggleDropdown()">Columns View</button>
+                    <button onclick="exportToExcel('productTable', '{{title}}')">Excel</button>
+                    <button onclick="exportToPDF('productTable', '{{title}}')">PDF</button>
+                    <button onclick="exportToCSV('productTable', '{{title}}')">CSV</button>
+                    <button style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                        onclick="copyTable('productTable')">Copy</button>
+                    <div id="columnDropdown" class="dropdown-content">
+                        <!-- Checkboxes will be dynamically inserted here -->
+                    </div>
+                    <table class="winners-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Username</th>
+                                <th>Mobile</th>
+                                <th>Scratch Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>JohnDoe</td>
+                                <td>1234567890</td>
+                                <td>7/17/24, 4:14:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>JaneSmith</td>
+                                <td>0987654321</td>
+                                <td>7/17/24, 4:20:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>AliceBrown</td>
+                                <td>1231231234</td>
+                                <td>7/17/24, 4:25:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>CharlieGreen</td>
+                                <td>4321432143</td>
+                                <td>7/17/24, 4:30:00 PM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.tab-content');
+        <script>
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
 
-            contents.forEach(content => {
-                if (content.classList.contains(tab.getAttribute('data-tab'))) {
-                    content.style.display = 'block';
-                } else {
-                    content.style.display = 'none';
-                }
+                    contents.forEach(content => {
+                        if (content.classList.contains(tab.getAttribute('data-tab'))) {
+                            content.style.display = 'block';
+                        } else {
+                            content.style.display = 'none';
+                        }
+                    });
+                });
             });
-        });
-    });
 
-    // Trigger the default tab to be shown on page load
-    document.querySelector('.tab.active').click();
-</script>
+            // Trigger the default tab to be shown on page load
+            document.querySelector('.tab.active').click();
+        </script>
 </body>
+
 </html>
 {{>footer}}

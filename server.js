@@ -30,6 +30,28 @@ const adminAuthRouter = require("./routes/adminRouter.js");
 app.use("/admin", adminAuthRouter);
 
 
-app.listen(8000, () => {
-    console.log('Server is running on port 8000');
+
+const PORT =8000;
+
+// app.listen(PORT, () => {
+//   console.log('Server is running on port ' + PORT);
+// });
+
+const os = require('os');
+
+function getLocalIPAddress() {
+  const interfaces = os.networkInterfaces();
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      if (iface.family === 'IPv4' && !iface.internal) {
+        return iface.address;
+      }
+    }
+  }
+  return 'localhost';
+}
+
+app.listen(PORT, () => {
+  const ipAddress = getLocalIPAddress();
+  console.log(`Server is running on http://${ipAddress}:${PORT}`);
 });

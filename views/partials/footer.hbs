@@ -87,6 +87,49 @@
     });
 </script>
 <script>
+    // Function to animate numbers
+    function animateValue(id, start, end, duration) {
+        const obj = document.getElementById(id);
+        let startTimestamp = null;
+
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.querySelector("h3").innerHTML = Math.floor(progress * (end - start) + start);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+
+        window.requestAnimationFrame(step);
+    }
+
+    // Show the loader on page load
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector("body").style.visibility = "hidden";
+            document.querySelector("#loader").style.visibility = "visible";
+        } else {
+            // Delay by 1 second (1000 ms)
+            setTimeout(() => {
+                // Hide the loader and show the content
+                document.querySelector("#loader").style.display = "none";
+                document.querySelector("body").style.visibility = "visible";
+
+                // Animate the dashboard numbers
+                const cards = document.querySelectorAll('.card');
+                cards.forEach((card) => {
+                    const valueElement = card.querySelector('h3');
+                    const finalValue = parseInt(valueElement.innerText, 10); // Get the final value from the card
+                    animateValue(card.id, 0, finalValue, 2000); // Animate from 0 to final value
+                });
+            }, 1000); // 1-second delay
+        }
+    };
+</script>
+
+
+<script>
     $(document).ready(function () {
         var table = $("#example1").DataTable({
             "responsive": true, "ordering": true, "lengthChange": false, "autoWidth": false, "bPaginate": true, "bInfo": false, "searching": true, "pageLength": 10,
