@@ -445,17 +445,14 @@
             window.requestAnimationFrame(step);
         }
 
-        // Animate all cards dynamically on page load
-        window.onload = function () {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card) => {
-                const valueElement = card.querySelector('h3');
-                const finalValue = parseInt(valueElement.innerText, 10); // Get the final value from the card
-                animateValue(card.id, 0, finalValue, 2000); // Animate from 0 to final value
-            });
+    // Animate all cards on page load
+    window.onload = function() {
+        animateValue("user", 0, 25075, 2000);
+        animateValue("executive", 0, 28, 2000);
+        animateValue("loan", 0, 2500, 2000);
+        animateValue("product", 0, 5000, 2000);
         };
     </script>
-
 
     <script>
         function showToast(type) {
